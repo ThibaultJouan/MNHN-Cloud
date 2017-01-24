@@ -7,7 +7,6 @@ final class Email
     
     private function __construct(string $email)
     {
-        $this->ensureIsValidEmail($email);
         $this->email = $email;
     }
 
@@ -19,17 +18,5 @@ final class Email
     public function __toString(): string
     {
         return $this->email;
-    }
-
-    private function ensureIsValidEmail(string $email): void
-    {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    '"%s" is not a valid email address',
-                    $email
-                )
-            );
-        }
     }
 }
