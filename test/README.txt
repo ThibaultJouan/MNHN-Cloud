@@ -1,4 +1,4 @@
-pour lancer les tests  lancer les commandes suivantes:
+pour lancer les tests  lancer les commandes suivantes dans le dossier test:
 	Exemple:
 		Linux : php phpunit-5.7.6.phar --bootstrap Exemple/Email.php Exemple/EmailTest.php
 		Windows : (Path de php.exe sur wamp) + phpunit-5.7.6.phar --bootstrap Exemple/Email.php Exemple/EmailTest.php
