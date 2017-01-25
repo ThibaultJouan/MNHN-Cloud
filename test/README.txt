@@ -1,4 +1,4 @@
-pour lancer les tests  lancer les commandes suivantes:
+pour lancer les tests  lancer les commandes suivantes dans le dossier test:
 	Exemple:
 		testUnitaire de base:
 			Linux : php phpunit-5.7.6.phar --bootstrap Exemple/Mail/Email.php Exemple/Mail/EmailTest.php
