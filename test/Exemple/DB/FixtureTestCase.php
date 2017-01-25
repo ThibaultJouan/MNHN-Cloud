@@ -43,7 +43,7 @@ class FixtureTestCase extends PHPUnit_Extensions_Database_TestCase {
 	public function getConnection() {
 		if ($this->conn === null) {
 			try {
-				$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', 'ggagni42');
+				$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
 				$this->conn = $this->createDefaultDBConnection($pdo, 'test');
 			} catch (PDOException $e) {
 				echo $e->getMessage();
