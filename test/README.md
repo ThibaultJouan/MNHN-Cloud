@@ -12,7 +12,7 @@ Pour lancer les tests  lancer les commandes suivantes dans le dossier test:
 		```php phpunit-5.7.6.phar --bootstrap Exemple/DB/FixtureTestCase.php Exemple/DB/MyTestCase.php```
 	
 * ## le contenu du fichier TestConfig.php :
-```html
+```php
 <?php
 
 	class TestConfig{
