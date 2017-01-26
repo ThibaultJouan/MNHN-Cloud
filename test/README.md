@@ -10,7 +10,7 @@ Pour lancer les tests  lancer les commandes suivantes dans le dossier test:
 
 	* ### testUnitaire simulation base de donne:
 
-		Pour lancer le test suivant, créer une base de données, et modifier les configs dans le fichier test/Exemple/DB/FixturesTestCase.php, dans la fonction getConnection()
+		Pour lancer le test suivant, créer une base de données, et modifier les configs dans le fichier test/config.php, et ajouter le fichier a .gitIgnore pour eviter de commit ses mot de passe :D
 
 		```php phpunit-5.7.6.phar --bootstrap Exemple/DB/FixtureTestCase.php Exemple/DB/MyTestCase.php```
 	
