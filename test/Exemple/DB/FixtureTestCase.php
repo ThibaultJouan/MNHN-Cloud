@@ -2,7 +2,7 @@
 // we're loading the Database TestCase here
 use PHPUnit\Framework\TestCase;
 
-include 'Config.php';
+include 'TestConfig.php';
 
 class FixtureTestCase extends PHPUnit_Extensions_Database_TestCase {
   public $fixtures = array(
@@ -45,7 +45,7 @@ class FixtureTestCase extends PHPUnit_Extensions_Database_TestCase {
 	public function getConnection() {
 		if ($this->conn === null) {
 			try {
-				$pdo = new PDO('mysql:host=localhost;dbname='.Config::BASE, Config::IDENTIFIANT, Config::PASSWORD);
+				$pdo = new PDO('mysql:host=localhost;dbname='.TestConfig::BASE, TestConfig::IDENTIFIANT, TestConfig::PASSWORD);
 				$this->conn = $this->createDefaultDBConnection($pdo, 'test');
 			} catch (PDOException $e) {
 				echo $e->getMessage();
