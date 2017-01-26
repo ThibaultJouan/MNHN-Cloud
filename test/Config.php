@@ -1,9 +1,9 @@
 <?php
 
 class Config{
-    const IDENTIFIANT = "";
-    const PASSWORD = "";
-    const BASE = "";
+    const IDENTIFIANT = "zaet";
+    const PASSWORD = "azes";
+    const BASE = "azet";
 }
 
 ?>
