@@ -220,4 +220,4 @@ pip-log.txt
 #############
 
 #Test
-test/Config.php
+./test/Config.php
