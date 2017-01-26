@@ -2,7 +2,7 @@
 // we're loading the Database TestCase here
 use PHPUnit\Framework\TestCase;
 
-include 'config.php';
+include 'Config.php';
 
 class FixtureTestCase extends PHPUnit_Extensions_Database_TestCase {
   public $fixtures = array(
