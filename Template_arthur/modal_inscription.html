@@ -1,0 +1,38 @@
+<!-- modal s'inscrire -->
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" align="center">
+				<img class="img-circle" src="./image/miramap.jpg">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				</button>
+			</div>
+			<form id="inscription-form" method="post" action="inscription.php">
+				<div class="modal-body">
+					<p><i class="glyphicon glyphicon-chevron-right"></i>Renseigner vos données.</p>
+					<div class="row">
+						<div class="col-lg-6">					
+							<input name="nom" class="form-control" type="text" placeholder="Nom" required>
+						</div>
+						<div class="col-lg-6">
+							<input name="prenom" class="form-control" type="text" placeholder="Prénom" required>
+						</div>
+					</div>
+					<br>
+					<input name="login" class="form-control" type="text" placeholder="Login" required>
+					<br>
+					<input name="mdp" class="form-control" type="password" placeholder="Mot de passe" required>
+					<br>
+                    <input name="e-mail" class="form-control" type="text" placeholder="E-Mail" required>
+					<br>
+                    <input name="adresse" class="form-control" type="text" placeholder="Adresse" required>
+
+       		    </div>
+			    <div class="modal-footer">
+                    <button type="submit" form="inscription-form" class="btn btn-primary btn-lg btn-block " href="inscription.php">S'inscrire</button>
+				</div>
+			</form>
+        </div>
+	</div>
+</div>
