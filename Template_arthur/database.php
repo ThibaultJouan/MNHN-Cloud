@@ -1,5 +1,5 @@
 <?php
-include(__DIR__.'/../apache-log4php-2.3.0/src/main/php/Logger.php');
+include(__DIR__.'/log/log.php');
 class Database
 {
     /**
@@ -19,8 +19,7 @@ class Database
      
     public static function connect()
     {
-        Logger::configure(__DIR__.'/log/config/config.xml');
-        $log = Logger::getLogger('myLogger');
+       $log = Log::getLog();
        // One connection through whole application
        if ( null == self::$cont )
        {     
