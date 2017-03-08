@@ -1,5 +1,5 @@
 <?php
-include(__DIR__.'/log/log.php');
+include_once(__DIR__.'/log/log.php');
 class Database
 {
     /**
