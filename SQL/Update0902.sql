@@ -1,0 +1,1 @@
+ALTER TABLE `utilisateur` CHANGE `datecreation_utilisateur` `datecreation_utilisateur` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CHANGE `admin_utilisateur` `admin_utilisateur` TINYINT(1) NOT NULL;

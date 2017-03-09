@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <?php
-		  include_once ('utilisateur_dao.php');
+		  include_once (__DIR__.'/dao/utilisateur_dao.php');
     ?>
   <title>Page Admin</title>
   <meta charset="utf-8">
@@ -49,7 +49,7 @@
   <!-- Fin Modal -->  
   <h2>Utilisateurs</h2>
   <p>
-    <a href="create.php" class="btn btn-success">Créé utilisateur</a>
+    <a href="create_user.php" class="btn btn-success">Créé utilisateur</a>
   </p>
   <table class="table table-striped table-bordered">
     <thead>

@@ -8,7 +8,7 @@
         $.ajax( {
             type : 'post',
             data : 'rowid='+ rowid,
-            url  : 'switch_actif.php',
+            url  : 'switch_actif_bdd.php',
             success: function ( data ) {
                 alert( data );
             },
@@ -22,7 +22,7 @@
   <body>
 
 <?php
-include_once ('utilisateur_dao.php');
+include_once (__DIR__.'/dao/utilisateur_dao.php');
 if($_POST['rowid']) {
     $id = $_POST['rowid']; //escape string
     $row = UtilisateurDao::getNomPrenomActifById($id);  
@@ -43,13 +43,13 @@ if($_POST['rowid']) {
         <div class = 'col-md-3'>
             <p>
                 <?php
-                echo '<a href="admin.php" class="btn btn-success"$ id="active" data-id="'.$id.'">';
+                echo '<a href="admin.php" class="btn btn-success" id="active" data-id="'.$id.'">';
 
                     if($row['actif_utilisateur'] == 1){
-                        echo "désactive ";
+                        echo "Désactive ";
                     }
                     else{
-                        echo "active ";
+                        echo "Active ";
                     } 
                     ?>
                 </a>
@@ -57,7 +57,7 @@ if($_POST['rowid']) {
         </div>
         <div class = 'col-md-3'>
             <p>
-                <a href="admin.php" class="btn btn-warning">annule</a>
+                <a href="admin.php" class="btn btn-warning">Annule</a>
             </p>
         </div>  
      </div>
