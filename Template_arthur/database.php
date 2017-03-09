@@ -26,7 +26,7 @@ class Database
         try
         {
           $log->debug("connection a la base de donnée !");
-          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword); 
+          self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
         }
         catch(PDOException $e)
         {

@@ -85,7 +85,7 @@ class UtilisateurDao
             $log->info("Création de l'utilisateur ".$prenom." ".$nom);
         }
         else{
-            $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom." ");
+            $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom);
             Database::disconnect();
             return 0;
         }
