@@ -66,24 +66,16 @@ class UtilisateurDao
     public static function createUser($prenom,$nom,$email,$mdp)
     {
         $log = Log::getLog();
-        $mdp_bdd = md5($mdp);
+        $mdp_bdd = sha1($mdp,TRUE);
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
-        //Requette passe sur phpmyadmin mais pas ici ......
         $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, 
             mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
-            VALUES (:nom, :prenom, :email, :mdp, :actif, :admin)";
+            VALUES ( ? , ? , ? , ? , ? , ? )";
         $req = $pdo->prepare($sql);
-        $req->bindValue(':nom', $nom, PDO::PARAM_STR);
-        $req->bindValue(':prenom', $prenom, PDO::PARAM_STR);
-        $req->bindValue(':email', $email, PDO::PARAM_STR);
-        $req->bindValue(':mdp', $mdp_bdd, PDO::PARAM_STR);
-        $req->bindValue(':actif', $actif, PDO::PARAM_INT);
-        $req->bindValue(':admin', $admin, PDO::PARAM_INT);
-        if($req->execute()){
+        if($req->execute(array($nom, $prenom, $email, $mdp_bdd, $actif, $admin)))
             $log->info("Création de l'utilisateur ".$prenom." ".$nom);
-        }
         else{
             $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom);
             Database::disconnect();
