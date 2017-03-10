@@ -144,7 +144,7 @@
         echo '<td>'. $row['datecreation_refexperience'] . '<td>';
         echo '<td>';
         //TODO go sur edit projet avec $row['id_refexperience'] en POST
-        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver utilisateur</a>';
+        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver experience</a>';
         echo '<td>';
         echo '<tr>';
       }
