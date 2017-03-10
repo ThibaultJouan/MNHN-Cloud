@@ -3,6 +3,7 @@
 <head>
     <?php
 		  include_once (__DIR__.'/dao/utilisateur_dao.php');
+      include_once (__DIR__.'/dao/projet_dao.php');
     ?>
   <title>Page Admin</title>
   <meta charset="utf-8">
@@ -47,6 +48,8 @@
     </div>
   </div>
   <!-- Fin Modal -->  
+  
+  <!-- Module utilisateur -->
   <h2>Utilisateurs</h2>
   <p>
     <a href="create_user.php" class="btn btn-success">Créé utilisateur</a>
@@ -80,6 +83,40 @@
     ?>
     </tbody>
   </table>
+  <!-- Fin Module utilisateur -->
+
+  <!-- Module projet -->
+  <h2>Projets</h2>
+  <p>
+    <a href="create_project.php" class="btn btn-success">Créé projet</a>
+  </p>
+   <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Libellé</th>
+        <th>Commentaire</th>
+        <th>Actif</th>
+        <th>Date creation</th>                
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach(ProjetDao::selectAll() as $row){
+        echo '<tr>';
+        echo '<td>'. $row['libelle_projet'] . '</td>';
+        echo '<td>'. $row['commentaire_projet'] . '</td>';
+        echo '<td>'. $row['actif_projet'] . '</td>';
+        echo '<td>'. $row['datecreation_projet'] . '<td>';
+        echo '<td>';
+        //todo go sur edit projet avec $row['id_projet'] en POST
+        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_utilisateur'].'">Editer projet</a>';
+        echo '<td>';
+        echo '<tr>';
+      }
+    ?>
+    </tbody>
+  </table>
+  <!--Fin Module projet -->
 </div>
 
 </body>
