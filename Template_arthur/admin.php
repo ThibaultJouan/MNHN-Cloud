@@ -4,6 +4,8 @@
     <?php
 		  include_once (__DIR__.'/dao/utilisateur_dao.php');
       include_once (__DIR__.'/dao/projet_dao.php');
+      include_once (__DIR__.'/dao/refexperience_dao.php');
+      include_once (__DIR__.'/dao/reftypedonnee_dao.php');
     ?>
   <title>Page Admin</title>
   <meta charset="utf-8">
@@ -52,7 +54,7 @@
   <!-- Module utilisateur -->
   <h2>Utilisateurs</h2>
   <p>
-    <a href="create_user.php" class="btn btn-success">Créé utilisateur</a>
+    <a href="create_user.php" class="btn btn-success">Créé un utilisateur</a>
   </p>
   <table class="table table-striped table-bordered">
     <thead>
@@ -88,7 +90,7 @@
   <!-- Module projet -->
   <h2>Projets</h2>
   <p>
-    <a href="create_project.php" class="btn btn-success">Créé projet</a>
+    <a href="create_project.php" class="btn btn-success">Créé un projet</a>
   </p>
    <table class="table table-striped table-bordered">
     <thead>
@@ -108,8 +110,8 @@
         echo '<td>'. $row['actif_projet'] . '</td>';
         echo '<td>'. $row['datecreation_projet'] . '<td>';
         echo '<td>';
-        //todo go sur edit projet avec $row['id_projet'] en POST
-        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_utilisateur'].'">Editer projet</a>';
+        //TODO go sur edit projet avec $row['id_projet'] en POST
+        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_projet'].'">Editer projet</a>';
         echo '<td>';
         echo '<tr>';
       }
@@ -117,6 +119,64 @@
     </tbody>
   </table>
   <!--Fin Module projet -->
+
+  <!-- Module ref experience -->
+  <h2>Experiences</h2>
+  <p>
+    <a href="create_experience.php" class="btn btn-success">Créé une experience</a>
+  </p>
+   <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Libellé</th>
+        <th>Commentaire</th>
+        <th>Actif</th>
+        <th>Date creation</th>                
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+      foreach(RefExperienceDao::selectAll() as $row){
+        echo '<tr>';
+        echo '<td>'. $row['libelle_refexperience'] . '</td>';
+        echo '<td>'. $row['commentaire_refexperience'] . '</td>';
+        echo '<td>'. $row['actif_refexperience'] . '</td>';
+        echo '<td>'. $row['datecreation_refexperience'] . '<td>';
+        echo '<td>';
+        //TODO go sur edit projet avec $row['id_refexperience'] en POST
+        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver utilisateur</a>';
+        echo '<td>';
+        echo '<tr>';
+      }
+    ?>
+    </tbody>
+  </table>
+  <!--Fin Module ref experience -->
+
+  <!-- Module type de donnée -->
+  <h2>Types de donnée</h2>
+  <p>
+    <a href="create_reftypedonnee.php" class="btn btn-success">Créé un type de donnée</a>
+  </p>
+   <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Libellé</th>
+        <th>Commentaire</th>               
+      </tr>
+    </thead>
+    <tbody>
+      <?php
+      foreach(RefTypeDonneeDao::selectAll() as $row){
+        echo '<tr>';
+        echo '<td>'. $row['libelle_reftypedonnee'] . '</td>';
+        echo '<td>'. $row['commentaire_reftypedonnee'] . '</td>';
+        echo '<tr>';
+      }
+    ?>
+    </tbody>
+  </table>
+  <!--Fin Module type de donnée -->
 </div>
 
 </body>
