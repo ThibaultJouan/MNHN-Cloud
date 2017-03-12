@@ -7,11 +7,11 @@ if($_POST['prenomInscr'] && $_POST['nomInscr'] && $_POST['emailInscr'] && $_POST
     $mdp = $_POST['mdpInscr'];
     $success = UtilisateurDao::createUser($prenom,$nom,$email,$mdp);
     if($success)
-        header('location:create_validate.html');
+        header('location:create_user_validate.html');
     else
         header('location:create_user.html');  
 }
 else{
-    header('location:create_denied.html');  
+    header('location:create_user_denied.html');  
 }
 ?>
