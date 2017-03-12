@@ -62,7 +62,7 @@ if($_POST['rowid']) {
         </div>  
      </div>
      <?php
-     }  
+     }  //TODO else 404
     ?>
   </body>
 </html>

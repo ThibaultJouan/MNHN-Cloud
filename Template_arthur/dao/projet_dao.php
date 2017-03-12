@@ -37,5 +37,35 @@ class ProjetDao
         Database::disconnect();
         return 1;
     }
+
+    public static function getLibelleCommentaireActifById($id)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT libelle_projet, commentaire_projet, actif_projet FROM projet WHERE id_projet = ? LIMIT 1 ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute(array($id));
+        self::$data = $sth->fetch();
+        Database::disconnect();
+        return self::$data;
+    }
+
+    public static function updateProject($id,$libelle,$comment,$actif)
+    {
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE projet SET libelle_projet = ? , commentaire_projet = ? , actif_projet = ?  WHERE id_projet = ? ";
+        $sth = $pdo->prepare($sql);
+        if($sth->execute(array($libelle,$comment,$actif,$id))){
+            $log->info("Mise a jour du projet ".$libelle.".");
+        }
+        else{
+            $log->error("Echec de la mise a jour du projet ".$libelle.".");
+            Database::disconnect();
+            return 0;
+        }
+
+        Database::disconnect();
+        return 1;
+    }
 }
 ?>
