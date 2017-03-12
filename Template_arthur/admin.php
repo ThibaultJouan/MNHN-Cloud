@@ -24,7 +24,7 @@
           url : 'delete_user.php', //Here you will fetch records 
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
-            $('.fetched-data').html(data);//Show fetched data from database
+            $('#fetched-data-user').html(data);//Show fetched data from database
           }
         });
       });
@@ -41,7 +41,24 @@
           url : 'edit_project.php', //Here you will fetch records 
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
-            $('.fetched-data').html(data);//Show fetched data from database
+            $('#fetched-data-project').html(data);//Show fetched data from database
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- active/desactive experience -->
+  <script>
+    $(document).ready(function(){
+      $('#desactive-experience').on('show.bs.modal', function (e) {
+        var rowid = $(e.relatedTarget).data('id');
+        $.ajax({
+          type : 'post',
+          url : 'delete_experience.php', //Here you will fetch records 
+          data :  'rowid='+ rowid, //Pass $id
+          success : function(data){
+            $('#fetched-data-experience').html(data);//Show fetched data from database
           }
         });
       });
@@ -64,7 +81,7 @@
           <h4 class="modal-title">Désactivation utilisateur</h4>
         </div>
         <div class="modal-body">
-          <div class="fetched-data"></div>
+          <div class="fetched-data" id="fetched-data-user"></div>
         </div>
       </div>
       
@@ -83,13 +100,32 @@
           <h4 class="modal-title">Editer projet</h4>
         </div>
         <div class="modal-body">
-          <div class="fetched-data"></div>
+          <div class="fetched-data" id="fetched-data-project"></div>
         </div>
       </div>
       
     </div>
   </div>
   <!-- Fin edit projet -->
+
+  <!-- Active/desactive experience -->
+  <div class="modal fade" id="desactive-experience" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Désactivation utilisateur</h4>
+        </div>
+        <div class="modal-body">
+          <div class="fetched-data" id="fetched-data-experience"></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Fin active/desactive experience -->
 
   <!-- Fin Modals -->  
   
@@ -186,7 +222,7 @@
         echo '<td>'. $row['datecreation_refexperience'] . '<td>';
         echo '<td>';
         //TODO go sur edit projet avec $row['id_refexperience'] en POST
-        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver experience</a>';
+        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver experience</a>';
         echo '<td>';
         echo '<tr>';
       }

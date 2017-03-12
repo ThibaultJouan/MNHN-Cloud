@@ -2,13 +2,13 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
-    $("#active-usr").on('click',function(){
-        var act = document.getElementById('active-usr');
+    $("#active-exp").on('click',function(){
+        var act = document.getElementById('active-exp');
         var rowid = act.getAttribute('data-id');
         $.ajax( {
             type : 'post',
             data : 'rowid='+ rowid,
-            url  : 'switch_actif_user_bdd.php',
+            url  : 'switch_actif_experience_bdd.php',
             success: function ( data ) {
                 alert( data );
             },
@@ -22,21 +22,21 @@
   <body>
 
 <?php
-include_once (__DIR__.'/dao/utilisateur_dao.php');
+include_once (__DIR__.'/dao/refexperience_dao.php');
 if($_POST['rowid']) {
     $id = $_POST['rowid']; //escape string
-    $row = UtilisateurDao::getNomPrenomActifById($id);  
+    $row = RefExperienceDao::getLibelleActifById($id);
     ?>
     <div>
     Voulez-vous 
     <?php
-    if($row['actif_utilisateur'] == 1){
+    if($row['actif_refexperience'] == 1){
         echo "désactiver ";
      }
      else{
          echo "activer ";
      } 
-     echo $row['prenom_utilisateur']." ".$row['nom_utilisateur']."?";
+     echo $row['libelle_refexperience']."?";
      ?>
      </div>
      </br>
@@ -45,9 +45,9 @@ if($_POST['rowid']) {
         <div class = 'col-md-3'>
             <p>
                 <?php
-                echo '<a href="admin.php" class="btn btn-success" id="active-usr" data-id="'.$id.'">';
+                echo '<a href="admin.php" class="btn btn-success" id="active-exp" data-id="'.$id.'">';
 
-                    if($row['actif_utilisateur'] == 1){
+                    if($row['actif_refexperience'] == 1){
                         echo "Désactive ";
                     }
                     else{
