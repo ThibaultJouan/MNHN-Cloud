@@ -9,7 +9,7 @@ if($_POST['prenomInscr'] && $_POST['nomInscr'] && $_POST['emailInscr'] && $_POST
     if($success)
         header('location:create_validate.html');
     else
-        header('location:create_user.php');  
+        header('location:create_user.html');  
 }
 else{
     header('location:create_denied.html');  
