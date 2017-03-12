@@ -9,7 +9,7 @@ if(isset($_POST['idProject']) && isset($_POST['libelleProject']) && isset($_POST
         $actif = 1;
     else
         $actif = 0;
-    if($success)
+    if(ProjetDAO::updateProject($id,$libelle,$comment,$actif))
         header('location:edit_project_validate.html');
     else
         header('location:edit_project_denied.html');  
