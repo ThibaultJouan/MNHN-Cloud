@@ -95,7 +95,7 @@
    <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        <th>Libellé</th>
+        <th>Nom</th>
         <th>Commentaire</th>
         <th>Actif</th>
         <th>Date creation</th>                
