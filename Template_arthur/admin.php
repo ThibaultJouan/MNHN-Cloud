@@ -54,7 +54,7 @@
   <!-- Module utilisateur -->
   <h2>Utilisateurs</h2>
   <p>
-    <a href="create_user.php" class="btn btn-success">Créé un utilisateur</a>
+    <a href="create_user.html" class="btn btn-success">Créé un utilisateur</a>
   </p>
   <table class="table table-striped table-bordered">
     <thead>
@@ -90,7 +90,7 @@
   <!-- Module projet -->
   <h2>Projets</h2>
   <p>
-    <a href="create_project.php" class="btn btn-success">Créé un projet</a>
+    <a href="create_project.html" class="btn btn-success">Créé un projet</a>
   </p>
    <table class="table table-striped table-bordered">
     <thead>
@@ -123,7 +123,7 @@
   <!-- Module ref experience -->
   <h2>Experiences</h2>
   <p>
-    <a href="create_experience.php" class="btn btn-success">Créé une experience</a>
+    <a href="create_experience.html" class="btn btn-success">Créé une experience</a>
   </p>
    <table class="table table-striped table-bordered">
     <thead>
@@ -156,7 +156,7 @@
   <!-- Module type de donnée -->
   <h2>Types de donnée</h2>
   <p>
-    <a href="create_reftypedonnee.php" class="btn btn-success">Créé un type de donnée</a>
+    <a href="create_reftypedonnee.html" class="btn btn-success">Créé un type de donnée</a>
   </p>
    <table class="table table-striped table-bordered">
     <thead>
