@@ -8,7 +8,7 @@
         $.ajax( {
             type : 'post',
             data : 'rowid='+ rowid,
-            url  : 'switch_actif_bdd.php',
+            url  : 'switch_actif_user_bdd.php',
             success: function ( data ) {
                 alert( data );
             },
