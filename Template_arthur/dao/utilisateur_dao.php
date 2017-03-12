@@ -18,6 +18,28 @@ class UtilisateurDao
         return self::$data;
     }
 
+    public static function createUser($prenom,$nom,$email,$mdp)
+    {
+        $log = Log::getLog();
+        $mdp_bdd = sha1($mdp,TRUE);
+        $actif = 1;
+        $admin = 0;
+        $pdo = Database::connect();
+        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, 
+            mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
+            VALUES ( ? , ? , ? , ? , ? , ? )";
+        $req = $pdo->prepare($sql);
+        if($req->execute(array($nom, $prenom, $email, $mdp_bdd, $actif, $admin)))
+            $log->info("Création de l'utilisateur ".$prenom." ".$nom);
+        else{
+            $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom);
+            Database::disconnect();
+            return 0;
+        }
+        Database::disconnect();
+        return 1;
+    }
+
     public static function getNomPrenomActifById($id)
     {
         $pdo = Database::connect();
@@ -58,28 +80,6 @@ class UtilisateurDao
                 Database::disconnect();
                 return 0;
             }
-        }
-        Database::disconnect();
-        return 1;
-    }
-
-    public static function createUser($prenom,$nom,$email,$mdp)
-    {
-        $log = Log::getLog();
-        $mdp_bdd = sha1($mdp,TRUE);
-        $actif = 1;
-        $admin = 0;
-        $pdo = Database::connect();
-        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, 
-            mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
-            VALUES ( ? , ? , ? , ? , ? , ? )";
-        $req = $pdo->prepare($sql);
-        if($req->execute(array($nom, $prenom, $email, $mdp_bdd, $actif, $admin)))
-            $log->info("Création de l'utilisateur ".$prenom." ".$nom);
-        else{
-            $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom);
-            Database::disconnect();
-            return 0;
         }
         Database::disconnect();
         return 1;
