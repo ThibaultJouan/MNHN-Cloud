@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-		<title>Title</title>
+		<title>MNHN Cloud</title>
 
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,10 @@
 	</head>
 	
 	<body class="container">
-	<?php include ('connexion_bdd.php');?> 
+	<?php 
+		include ('database.php');
+		$pdo = Database::connect();
+	?> 
 		<header>
 			<div class="row">
 				<div class="col-md-12">

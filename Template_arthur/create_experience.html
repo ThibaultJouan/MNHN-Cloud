@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Creation d'experience</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="call-to-action">
+		    <div class="service-box">
+			    <form class="form" id="formExperience" method="post" action="create_experience.php">
+					<h3>Créé une experience</h3>
+					<div class="service-box">
+						<p class="text-muted">Nom *</p>
+						<input type="nom" class="form-control" placeholder="Nom"
+							name="libelleExperience">
+					</div>
+					<div class="service-box">
+						<p class="text-muted">Commentaire </p>
+                        <textarea class="form-control" rows="5" name="commentExperience"></textarea>
+                    </div>
+				</form>
+
+			</div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class = 'col-md-3'>
+                <button type="submit" form="formExperience"
+		            class="btn btn-success"
+			        href="create_experience.php">Créé</button>
+            </div>
+            <div class = 'col-md-3'>
+                <p>
+                    <a href="admin.php" class="btn btn-warning">Annule</a>
+                </p>
+            </div>  
+        </div>
+
+    </div>
+</body>
+</html>
