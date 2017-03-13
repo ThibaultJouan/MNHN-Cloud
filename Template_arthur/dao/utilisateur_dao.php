@@ -21,7 +21,7 @@ class UtilisateurDao
     public static function createUser($prenom,$nom,$email,$mdp)
     {
         $log = Log::getLog();
-        $mdp_bdd = sha1($mdp,TRUE);
+        $mdp_bdd = md5($mdp,TRUE);
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
