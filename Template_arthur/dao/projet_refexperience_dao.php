@@ -17,12 +17,7 @@ class Projet2RefExperienceDAO
             VALUES ( ? , ?)";
         $sth = $pdo->prepare($sql);
         if($sth->execute(array($idProject,$idExperience)))
-            $log->info("Relation projet: ".$idProject." experience: ".$idExperience." créé!");
-        else{
-            $log->error("Echec de la creation de la relation projet: ".$idProject." experience: ".$idExperience." !");
-            Database::disconnect();
-            return 0;
-        }   
+            $log->info("Relation projet: ".$idProject." experience: ".$idExperience." créé!");  
         Database::disconnect();
         return 1;
     }
