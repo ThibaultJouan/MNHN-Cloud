@@ -12,6 +12,16 @@
     <div class="container">
       <div class="call-to-action">
 		    <div class="service-box">
+          <form class="form" id="formProject2User" method="post" action="edit_project2user.php">
+            <?php
+              echo '<input type="HIDDEN" name="idProject" value="'.$id.'">';
+            ?>
+          </form>
+          <form class="form" id="formProject2Experience" method="post" action="edit_project2experience.php">
+            <?php
+              echo '<input type="HIDDEN" name="idProject" value="'.$id.'">';
+            ?>
+          </form>
 			    <form class="form" id="formProject" method="post" action="edit_project_bdd.php">
             <?php
               echo '<input type="HIDDEN" name="idProject" value="'.$id.'">';
@@ -37,7 +47,6 @@
                 echo '<label><input type="checkbox" name="actifProject" value="yes" form="formProject">Actif</label>';
               }
               else{
-                //TODO voir pourquoi la valeur est toujours "yes" meme apres decochage
                 echo '<label><input type="checkbox" name="actifProject" value="yes" checked>Actif</label>';
               }          
               ?>
@@ -47,11 +56,19 @@
       <br/>
       <br/>
       <div class="row">
-        <div class = 'col-md-3'>
+        <div class = 'col-md-2'>
           <button type="submit" form="formProject" class="btn btn-success"
 			      href="edit_project_bdd.php">Mise a jour</button>
         </div>
-        <div class = 'col-md-3'>
+        <div class = 'col-md-2'>
+          <button type="submit" form="formProject2User" class="btn btn-success"
+			      href="edit_project2user.php">Ajouter utilisateurs</button>
+        </div>
+        <div class = 'col-md-2'>
+          <button type="submit" form="formProject2Experience" class="btn btn-success"
+			      href="edit_project2experience.php">Ajouter experiences</button>
+        </div>
+        <div class = 'col-md-2'>
           <p>
             <a href="admin.php" class="btn btn-warning">Annule</a>
           </p>
