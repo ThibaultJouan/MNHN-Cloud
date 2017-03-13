@@ -8,7 +8,7 @@
 		<title>MNHN Cloud</title>
 
 		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,12 +18,8 @@
 		<![endif]-->
 
 	</head>
-	
 	<body class="container">
-	<?php 
-		include ('database.php');
-		$pdo = Database::connect();
-	?> 
+
 		<header>
 			<div class="row">
 				<div class="col-md-12">
@@ -40,13 +36,13 @@
 		
 		<footer class="row">
 			<div class="col-lg-offset-1 col-lg-10">
-				<p class="navbar-text pull-left">© 2017 - V 1.0 - Arthur Lorillard</p>
+				<p class="navbar-text pull-left">© 2017 - V 0.1</p>
 			</div>
 		</footer>
 		
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+		<!-- jQuery -->
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="../js/bootstrap.min.js"></script>
 	</body>
 </html>
