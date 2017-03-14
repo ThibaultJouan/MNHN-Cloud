@@ -19,6 +19,25 @@ class RefExperienceDao
         Database::disconnect();
         return self::$data;
     }
+    
+    public static function selectAllActif()
+    {
+        $pdo = Database::connect();
+        $sql = 'SELECT * FROM refexperience WHERE actif_refexperience = 1
+            ORDER BY id_refexperience DESC';
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
+    }
+
+    public static function getIdByActif()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT id_refexperience FROM refexperience WHERE actif_refexperience = 1";
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
+    }
 
     public static function createRefExperience($libelle,$comment)
     {

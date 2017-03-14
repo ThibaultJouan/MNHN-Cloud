@@ -49,6 +49,17 @@ class ProjetDao
         return self::$data;
     }
 
+    public static function getLibelleById($id)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT libelle_projet FROM projet WHERE id_projet = ? LIMIT 1 ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute(array($id));
+        self::$data = $sth->fetch();
+        Database::disconnect();
+        return self::$data;
+    }
+
     public static function updateProject($id,$libelle,$comment,$actif)
     {
         $log = Log::getLog();

@@ -18,10 +18,28 @@ class UtilisateurDao
         return self::$data;
     }
 
+    public static function selectIdPrenomNomMailByActif()
+    {
+        $pdo = Database::connect();
+        $sql = 'SELECT id_utilisateur, prenom_utilisateur, nom_utilisateur, mail_utilisateur FROM utilisateur WHERE actif_utilisateur = 1';
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
+    }
+
+    public static function getIdByActif()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT id_utilisateur FROM utilisateur WHERE actif_utilisateur = 1";
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
+    }
+
     public static function createUser($prenom,$nom,$email,$mdp)
     {
         $log = Log::getLog();
-        $mdp_bdd = sha1($mdp,TRUE);
+        $mdp_bdd = md5($mdp,TRUE);
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
