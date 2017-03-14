@@ -159,7 +159,7 @@
        echo '<td>';
        echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Aviter/Desactiver utilisateur</a>';
        echo '</td>';
-       echo '<tr>';
+       echo '</tr>';
       }
 	?>
     </tbody>
@@ -192,7 +192,7 @@
         //TODO go sur edit projet avec $row['id_projet'] en POST
         echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-project" data-id="'.$row['id_projet'].'">Editer projet</a>';
 		echo '</td>';
-        echo '<tr>';
+        echo '</tr>';
       }
 	?>
     </tbody>
@@ -225,7 +225,7 @@
         //TODO go sur edit projet avec $row['id_refexperience'] en POST
         echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver experience</a>';
         echo '</td>';
-        echo '<tr>';
+        echo '</tr>';
       }
 	?>
     </tbody>
@@ -250,7 +250,7 @@
         echo '<tr>';
         echo '<td>'. $row['libelle_reftypedonnee'] . '</td>';
         echo '<td>'. $row['commentaire_reftypedonnee'] . '</td>';
-        echo '<tr>';
+        echo '</tr>';
       }
 	?>
     </tbody>
