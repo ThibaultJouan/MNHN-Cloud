@@ -34,9 +34,7 @@ class RefExperienceDao
     {
         $pdo = Database::connect();
         $sql = "SELECT id_refexperience FROM refexperience WHERE actif_refexperience = 1";
-        $sth = $pdo->prepare($sql);
-        $sth->execute();
-        self::$data = $sth->fetch();
+        self::$data = $pdo->query($sql);
         Database::disconnect();
         return self::$data;
     }

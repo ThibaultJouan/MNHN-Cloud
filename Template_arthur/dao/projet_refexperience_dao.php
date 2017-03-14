@@ -29,7 +29,7 @@ class Projet2RefExperienceDAO
         $sql = "DELETE FROM projet2refexperience WHERE id_projet = ? ";
         $sth = $pdo->prepare($sql);
         if($sth->execute(array($idProject)))
-            $log->info("Clean des relations projet: ".$idProject." !");
+            $log->info("Clean des relations projet: ".$idProject." vers les experiences !");
         Database::disconnect();
         return 1;
     }

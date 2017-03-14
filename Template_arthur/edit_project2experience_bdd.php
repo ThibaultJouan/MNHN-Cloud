@@ -4,9 +4,10 @@ include_once (__DIR__.'/dao/refexperience_dao.php');
 if($_POST['idProject']) {
     $idProject = $_POST['idProject'];
     Projet2RefExperienceDAO::deleteByIdProject($idProject);
-    foreach(RefExperienceDAO::getIdByActif() as $row){
-        if($_POST[$row]=="yes"){
-            Projet2RefExperienceDAO::create($idProject,$row); 
+    foreach(RefExperienceDao::getIdByActif() as $row){
+        $idExperience = $row['id_refexperience'];
+        if($_POST[$idExperience]=="yes"){
+            Projet2RefExperienceDAO::create($idProject,$idExperience); 
         }
     }
     header('location:edit_project_validate.html');   
