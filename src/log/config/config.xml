@@ -1,0 +1,10 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="myAppender" class="LoggerAppenderFile">
+        <param name="file" value="/var/www/html/MNHN-Cloud/src/app_log.log" />
+        <param name="append" value="true" />
+    </appender>
+    <root>
+        <level value="INFO" />
+        <appender_ref ref="myAppender" />
+    </root>
+</configuration>
