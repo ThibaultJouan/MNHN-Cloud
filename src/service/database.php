@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__.'/log/log.php');
+include_once(__DIR__.'/../log/log.php');
 class Database
 {
     /**
@@ -9,7 +9,7 @@ class Database
     private static $dbName = 'MNHN' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
-    private static $dbUserPassword = 'root';
+    private static $dbUserPassword = '';
      
     private static $cont  = null;
      

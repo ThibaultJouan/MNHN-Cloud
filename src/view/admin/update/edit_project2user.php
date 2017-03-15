@@ -9,13 +9,13 @@
         <script src="../../../../js/bootstrap.min.js"></script>
     </head>
     <body>
-        <?php
+		<?php
         include_once (__DIR__.'/../../../dao/projet_dao.php');
         include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
         include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
         if($_POST['idProject']) {
-        ?>
-        <div class="container">
+		?>
+		<div class="container">
             <?php
             $id = $_POST['idProject'];
             $projet = ProjetDao::getLibelleById($id);
@@ -37,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+					<?php
                     foreach(UtilisateurDao::selectIdPrenomNomMailByActif() as $row){
                         echo '<tr>';
                         echo '<td>'. $row['prenom_utilisateur'] . '</td>';
@@ -53,7 +53,7 @@
                         echo '</td>';
                         echo '</tr>';
                     }
-                    ?>
+					?>
                 </tbody>
             </table>
             <div class="row">
