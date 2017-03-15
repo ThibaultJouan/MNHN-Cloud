@@ -92,7 +92,6 @@ class LoggerAppenderFile extends LoggerAppender {
 				}
 			}
 		}
-
 		$mode = $this->append ? 'a' : 'w';
 		$this->fp = fopen($file, $mode);
 		if ($this->fp === false) {
@@ -101,12 +100,10 @@ class LoggerAppenderFile extends LoggerAppender {
 			$this->closed = true;
 			return false;
 		}
-
 		// Required when appending with concurrent access
 		if($this->append) {
 			fseek($this->fp, 0, SEEK_END);
 		}
-		
 		// Write the header
 		$this->write($this->layout->getHeader());
 	}
