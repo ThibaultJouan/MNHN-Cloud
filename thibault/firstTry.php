@@ -1,5 +1,5 @@
 <?php
-include_once('../Template_arthur/log/log.php');
+include_once('../src/log/log.php');
 
 class fileTools
 {
@@ -7,12 +7,10 @@ class fileTools
         die('Init function is not allowed');
     }
 
-	public static function createFile($Session, $input){
+	public static function createFile($input){
 
 
-		if(true == $Session['Admin']){
 			$ret = exec("touch " .$input, $out, $err);
-		}
 
 		//exit(var_dump($variable));
 		//Arrete l'execution et affiche la valeur de $variable
@@ -23,25 +21,19 @@ class fileTools
 
 	}
 
-		public static function deleteFile($Session, $input){
+		public static function deleteFile($input){
 
-			if(true == $Session['Admin']){
 				$ret = exec("rm " .$input, $out, $err);
-			}
 		}
 
-		public static function moveFile($Session, $pathSource, $pathDestination){
+		public static function moveFile($pathSource, $pathDestination){
 
-			if(true == $Session['Admin']){
 				$ret = exec("mv " .$pathSource. " " .$pathDestination, $out, $err);
-			}
 		}
 
-		public static function makeDirectory($Session, $path){
+		public static function makeDirectory($path){
 
-			if(true == $Session['Admin']){
 				$ret = exec("mkdir " .$path ,$out, $err);
-			}
 		}
 
 }
