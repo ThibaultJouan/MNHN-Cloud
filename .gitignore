@@ -221,3 +221,4 @@ pip-log.txt
 
 #Test
 test/TestConfig.php
+src/log/config/config.xml
