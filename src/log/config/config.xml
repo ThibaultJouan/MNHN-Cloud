@@ -1,13 +1,9 @@
 <configuration xmlns="http://logging.apache.org/log4php/">
     <appender name="myAppender" class="LoggerAppenderFile">
-<<<<<<< HEAD
-        <param name="file" value="C:\wamp64\www\MNHN-Cloud\src\app_log.log" />
-=======
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%-5level : %d{Y-m-d H:i:s} %F -> %msg%n" />
         </layout>
-        <param name="file" value="/var/www/html/MNHN-Cloud/src/app_log.log" />
->>>>>>> refs/remotes/origin/master
+        <param name="file" value="C:\wamp64\www\MNHN-Cloud\src\app_log.log" />
         <param name="append" value="true" />
     </appender>
     <root>
