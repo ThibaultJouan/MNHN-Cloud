@@ -36,10 +36,9 @@ class UtilisateurDao
         return self::$data;
     }
 
-    public static function createUser($prenom,$nom,$email,$mdp)
+    public static function createUser($prenom,$nom,$mail,$mdp)
     {
         $log = Log::getLog();
-        $mdp_bdd = md5($mdp,TRUE);
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
@@ -47,7 +46,7 @@ class UtilisateurDao
             mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
             VALUES ( ? , ? , ? , ? , ? , ? )";
         $req = $pdo->prepare($sql);
-        if($req->execute(array($nom, $prenom, $email, $mdp_bdd, $actif, $admin)))
+        if($req->execute(array($nom, $prenom, $mail, $mdp, $actif, $admin)))
             $log->info("Création de l'utilisateur ".$prenom." ".$nom);
         else{
             $log->error("Echec de la création de l'utilisateur ".$prenom." ".$nom);
@@ -65,6 +64,19 @@ class UtilisateurDao
         $sth = $pdo->prepare($sql);
         $sth->execute(array($id));
         self::$data = $sth->fetch();
+        Database::disconnect();
+        return self::$data;
+    }
+
+    public static function getIdByMail($mail)
+    {
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "SELECT id_utilisateur FROM utilisateur WHERE mail_utilisateur = ?  LIMIT 1 ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute(array($mail));
+        self::$data = $sth->fetch();
+        $log->info("id : ".self::$data);
         Database::disconnect();
         return self::$data;
     }
