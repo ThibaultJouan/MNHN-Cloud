@@ -113,5 +113,21 @@ class UtilisateurDao
         Database::disconnect();
         return 1;
     }
+	
+    public static function getNomPrenomActifAdminByMailMotdepasse($email,$mdp)
+    {
+		$log = log::getLog();
+        $pdo = Database::connect();
+        $sql = "SELECT prenom_utilisateur, nom_utilisateur, actif_utilisateur, admin_utilisateur FROM utilisateur WHERE mail_utilisateur = ? and motdepasse_utilisateur = ? LIMIT 1 ";
+        $sth = $pdo->prepare($sql);
+		$sth->execute(array($email,$mdp));
+        self::$data = $sth->fetch();
+		if(self::$data)
+			$log ->info("Connection réussit avec l'email: ".$email);
+		else
+			$log ->info("Echec de la connection avec l'email: ".$email);
+        Database::disconnect();
+        return self::$data;
+    }
 }
 ?>
