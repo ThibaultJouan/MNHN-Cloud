@@ -6,6 +6,5 @@ header('Content-type: application/txt');
 header('Content-Disposition: attachment; filename="log.txt"');
 
 // The PDF source is in original.pdf 
-//TODO voir les log
 readfile('../../app_log.log');
 ?> 
