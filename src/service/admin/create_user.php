@@ -6,11 +6,13 @@ if($_POST['prenomInscr'] && $_POST['nomInscr'] && $_POST['emailInscr'] && $_POST
 	$email = $_POST['emailInscr'];
     $mdp = md5($_POST['mdpInscr'],TRUE);
 
-    $successId = UtilisateurDao::getIdByMail($email);
     $log = Log::getLog();
+    $successId = UtilisateurDao::getIdByMail($email);
     if(!$successId){
-        $log->info('service : '.$success);
         $success = UtilisateurDao::createUser($prenom,$nom,$email,$mdp);
+    }
+    else{
+        $log->error("L'utilisateur mail : ".$email." est deja en base.");
     }
     if($success)
         header('location:../../view/admin/validate/create_user_validate.html');
