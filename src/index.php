@@ -65,7 +65,7 @@
 						</ul>	
 						<!-- à afficher en fonction du type de profile -->
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="admin.php">Admin</a></li>
+							<li><a href="view\admin">Admin</a></li>
 							<!-- à mofifier en foncion de la connection -->
 							<li><a href="admin.php">Mon profile</a></li>
 						</ul>
