@@ -1,14 +1,14 @@
 <?php
 include_once 'firstTry.php';
 
-session_start();
+//session_start();
 
-$_SESSION['Admin'] = true;
+//$_SESSION['Admin'] = true;
 
-fileTools::createFile($_SESSION, "test.txt");
-fileTools::moveFile($_SESSION, "test.txt", "Test.txt");
-//fileTools::deleteFile($_SESSION, "Test.txt");
-fileTools::makeDirectory($_SESSION, "testRepo");
+//fileTools::createFile("test.txt");
+//fileTools::moveFile("test.txt", "Test.txt");
+//fileTools::deleteFile("Test.txt");
+//fileTools::makeDirectory("testRepo");
 
 
 echo 'lol plz\n';
