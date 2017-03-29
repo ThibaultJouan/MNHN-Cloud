@@ -37,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+					<?php
                     foreach(RefExperienceDao::selectAllActif() as $row){
                         echo '<tr>';
                         echo '<td>'. $row['libelle_refexperience'] . '</td>';
@@ -53,7 +53,7 @@
                         echo '</td>';
                         echo '</tr>';
                     }
-                    ?>
+					?>
                 </tbody>
             </table>
             <div class="row">
