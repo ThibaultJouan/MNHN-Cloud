@@ -50,10 +50,10 @@
 						<br>
 						<form action="./../../service/connection.php" name="login" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
 							<div class="form-group">
-							<div class="col-md-8"><input name="emailConn" placeholder="Mail" class="form-control" type="email" /></div>
+							<div class="col-md-8"><input name="emailConn" placeholder="Mail" class="form-control" type="email" required></div>
 							</div> 
 							<div class="form-group">
-							<div class="col-md-8"><input name="mdpConn" placeholder="Mot de passe" class="form-control" type="password"/></div>
+							<div class="col-md-8"><input name="mdpConn" placeholder="Mot de passe" class="form-control" type="password" required></div>
 							</div> 
 							<div class="form-group">
 							<div class="col-md-offset-0 col-md-8"><input  class="btn btn-success btn btn-success" type="submit" value="Connexion"/></div>
