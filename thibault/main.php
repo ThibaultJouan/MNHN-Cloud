@@ -1,5 +1,5 @@
 <?php
-include_once 'fileTool.php';
+include_once 'fileTools.php';
 
 //session_start();
 
@@ -9,8 +9,8 @@ include_once 'fileTool.php';
 //fileTools::moveFile("test.txt", "Test.txt");
 //fileTools::deleteFile("Test.txt");
 //fileTools::makeDirectory("testRepo");
+//fileTools::deleteDirectory("testRepo");
 
-
-echo 'lol plz\n';
+echo 'lol plz';
 
 ?>
