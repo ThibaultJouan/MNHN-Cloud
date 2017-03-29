@@ -1,3 +1,0 @@
-ALTER TABLE `utilisateur` CHANGE `datecreation_utilisateur` `datecreation_utilisateur` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, CHANGE `admin_utilisateur` `admin_utilisateur` TINYINT(1) NOT NULL;
-ALTER TABLE `projet` CHANGE `datecreation_projet` `datecreation_projet` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
-ALTER TABLE `refexperience` CHANGE `datecreation_refexperience` `datecreation_refexperience` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;

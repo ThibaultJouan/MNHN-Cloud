@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 26 Janvier 2017 à 10:37
+-- Généré le :  Mer 29 Mars 2017 à 09:24
 -- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,9 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `mnhn`
 --
-
--- CREATE DATABASE MNHN;
-
 
 -- --------------------------------------------------------
 
@@ -51,7 +48,7 @@ CREATE TABLE `projet` (
   `libelle_projet` varchar(25) NOT NULL,
   `commentaire_projet` text,
   `actif_projet` tinyint(1) NOT NULL,
-  `datecreation_projet` date NOT NULL
+  `datecreation_projet` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,7 +84,7 @@ CREATE TABLE `refexperience` (
   `libelle_refexperience` varchar(25) NOT NULL,
   `commentaire_refexperience` text,
   `actif_refexperience` tinyint(1) NOT NULL,
-  `datecreation_refexperience` date NOT NULL
+  `datecreation_refexperience` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,8 +112,8 @@ CREATE TABLE `utilisateur` (
   `mail_utilisateur` varchar(50) NOT NULL,
   `motdepasse_utilisateur` varchar(25) NOT NULL,
   `actif_utilisateur` tinyint(1) NOT NULL,
-  `datecreation_utilisateur` date NOT NULL,
-  `admin_utilisateur` tinyint(1) DEFAULT NULL
+  `datecreation_utilisateur` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin_utilisateur` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
