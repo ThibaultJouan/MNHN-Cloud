@@ -76,7 +76,6 @@ class UtilisateurDao
         $sth = $pdo->prepare($sql);
         $sth->execute(array($mail));
         self::$data = $sth->fetch();
-        $log->info("id : ".self::$data);
         Database::disconnect();
         return self::$data;
     }
