@@ -3,7 +3,6 @@ include_once('../src/log/log.php');
 
 class fileTools
 {
-		//Constructeur par default, n'est pas cense etre appele donc renvoie une erreur
     public function __construct() {
         die('Init function is not allowed');
     }
