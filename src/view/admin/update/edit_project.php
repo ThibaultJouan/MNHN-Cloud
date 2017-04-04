@@ -3,11 +3,16 @@
     <script src="../../../js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-    <?php
+		<?php
+		session_start();
+		if($_SESSION ['admin'] != 1){
+			header('Location: ' . '../../../index.php');
+			exit();
+		}
 		include_once (__DIR__.'/../../../dao/projet_dao.php');
 		if($_POST['rowid']) {
 			$id = $_POST['rowid'];
-			$row = ProjetDao::getLibelleCommentaireActifById($id);  
+			$row = ProjetDao::getLibelleCommentaireActifById($id);
     ?>
     <div class="container">
 		<div class="row">
@@ -49,7 +54,7 @@
 									echo '<label><input type="checkbox" name="actifProject" value="yes" form="formProject">Actif</label>';
 								}else{
 									echo '<label><input type="checkbox" name="actifProject" value="yes" checked>Actif</label>';
-								}          
+								}
 							?>
 						</form>
 					</div>
@@ -64,11 +69,11 @@
 				<button type="submit" form="formProject2User" class="btn btn-success" href="./update/edit_project2user.php">Ajouter utilisateurs</button>
 				<button type="submit" form="formProject2Experience" class="btn btn-success" href="./update/edit_project2experience.php">Ajouter experiences</button>
 				<a href="index.php" class="btn btn-warning">Annule</a>
-			</div>  
+			</div>
 		</div>
     </div>
     <?php
-    } 
+    }
     ?>
 </body>
 </html>

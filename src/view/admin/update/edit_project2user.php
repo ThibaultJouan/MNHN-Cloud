@@ -10,10 +10,15 @@
     </head>
     <body>
 		<?php
-        include_once (__DIR__.'/../../../dao/projet_dao.php');
-        include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
-        include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
-        if($_POST['idProject']) {
+	 		session_start();
+			if($_SESSION ['admin'] != 1){
+				header('Location: ' . '../../../index.php');
+				exit();
+			}
+			include_once (__DIR__.'/../../../dao/projet_dao.php');
+      include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
+      include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
+      if($_POST['idProject']) {
 		?>
 		<div class="container">
             <?php
@@ -33,7 +38,7 @@
                     <tr>
                         <th>Prenom</th>
                         <th>Nom</th>
-                        <th>Mail</th>                
+                        <th>Mail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +70,7 @@
                     <p>
                         <a href="../index.php" class="btn btn-warning">Annule</a>
                     </p>
-                </div>  
+                </div>
             </div>
         </div>
         <?php

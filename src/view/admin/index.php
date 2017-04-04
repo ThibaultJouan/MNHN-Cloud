@@ -2,6 +2,11 @@
 <html lang="fr">
 <head>
     <?php
+		session_start();
+		if($_SESSION ['admin'] != 1){
+			header('Location: ' . '../../index.php');
+			exit();
+		}
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
@@ -10,9 +15,9 @@
   <title>Page Admin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link rel="icon" type="image/png" href="../../../img/logo/logo_MNHN.png" />
-	
+
 	<link rel="stylesheet" href="../../../css/bootstrap.min.css">
 	<script src="../../../js/jquery-3.1.1.min.js"></script>
 	<script src="../../../js/bootstrap.min.js"></script>
@@ -24,7 +29,7 @@
         var rowid = $(e.relatedTarget).data('id');
         $.ajax({
           type : 'post',
-          url : './update/delete_user.php', //Here you will fetch records 
+          url : './update/delete_user.php', //Here you will fetch records
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
             $('#fetched-data-user').html(data);//Show fetched data from database
@@ -41,7 +46,7 @@
         var rowid = $(e.relatedTarget).data('id');
         $.ajax({
           type : 'post',
-          url : './update/edit_project.php', //Here you will fetch records 
+          url : './update/edit_project.php', //Here you will fetch records
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
             $('#fetched-data-project').html(data);//Show fetched data from database
@@ -58,7 +63,7 @@
         var rowid = $(e.relatedTarget).data('id');
         $.ajax({
           type : 'post',
-          url : './update/delete_experience.php', //Here you will fetch records 
+          url : './update/delete_experience.php', //Here you will fetch records
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
             $('#fetched-data-experience').html(data);//Show fetched data from database
@@ -75,7 +80,7 @@
   <!-- Active/desactive utilisateur -->
     <div class="modal fade" id="desactive-user" role="dialog">
       <div class="modal-dialog">
-    
+
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -93,7 +98,7 @@
     <!-- Edit projet -->
     <div class="modal fade" id="edit-project" role="dialog">
       <div class="modal-dialog">
-    
+
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -111,7 +116,7 @@
     <!-- Active/desactive experience -->
     <div class="modal fade" id="desactive-experience" role="dialog">
       <div class="modal-dialog">
-    
+
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
@@ -126,8 +131,8 @@
     </div>
     <!-- Fin active/desactive experience -->
 
-    <!-- Fin Modals -->  
-  
+    <!-- Fin Modals -->
+
     <!-- Module utilisateur -->
     <h2>Utilisateurs</h2>
     <p>
@@ -141,7 +146,7 @@
           <th>Addresse email</th>
           <th>Admin</th>
           <th>Actif</th>
-          <th>Date creation</th>                
+          <th>Date creation</th>
         </tr>
       </thead>
       <tbody>
@@ -175,7 +180,7 @@
           <th>Nom</th>
           <th>Commentaire</th>
           <th>Actif</th>
-          <th>Date creation</th>                
+          <th>Date creation</th>
         </tr>
       </thead>
       <tbody>
@@ -207,7 +212,7 @@
           <th>Libellé</th>
           <th>Commentaire</th>
           <th>Actif</th>
-          <th>Date creation</th>                
+          <th>Date creation</th>
         </tr>
       </thead>
       <tbody>
@@ -237,7 +242,7 @@
       <thead>
         <tr>
           <th>Libellé</th>
-          <th>Commentaire</th>               
+          <th>Commentaire</th>
         </tr>
       </thead>
       <tbody>

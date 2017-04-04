@@ -22,20 +22,25 @@
   <body>
 
 <?php
+session_start();
+if($_SESSION ['admin'] != 1){
+	header('Location: ' . '../../../index.php');
+	exit();
+}
 include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
 if($_POST['rowid']) {
     $id = $_POST['rowid']; //escape string
-    $row = UtilisateurDao::getNomPrenomActifById($id); 
+    $row = UtilisateurDao::getNomPrenomActifById($id);
     ?>
     <div>
-    Voulez-vous 
+    Voulez-vous
     <?php
     if($row['actif_utilisateur'] == 1){
         echo "désactiver ";
      }
      else{
          echo "activer ";
-     } 
+     }
      echo $row['prenom_utilisateur']." ".$row['nom_utilisateur']."?";
      ?>
      </div>
@@ -52,7 +57,7 @@ if($_POST['rowid']) {
                     }
                     else{
                         echo "Active ";
-                    } 
+                    }
                     ?>
                 </a>
             </p>
@@ -61,10 +66,7 @@ if($_POST['rowid']) {
             <p>
                 <a href="index.php" class="btn btn-warning">Annule</a>
             </p>
-        </div>  
+        </div>
      </div>
-     <?php
-     }  //TODO else 404
-    ?>
   </body>
 </html>
