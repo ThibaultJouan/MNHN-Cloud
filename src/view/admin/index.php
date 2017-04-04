@@ -4,7 +4,7 @@
     <?php
 		session_start();
 		if($_SESSION ['admin'] != 1){
-		//	header('Location: ' . '../../index.php');
+			header('Location: ' . '../../index.php');
 			exit(var_dump($_SESSION['admin']));
 		}
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
