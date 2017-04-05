@@ -4,13 +4,14 @@
     <?php
 		session_start();
 		if($_SESSION ['admin'] != 1){
-		//	header('Location: ' . '../../index.php');
+			header('Location: ' . '../../index.php');
 			exit(var_dump($_SESSION['admin']));
 		}
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
 		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
+		include_once (__DIR__.'/../../dao/refpath_dao.php');
     ?>
   <title>Page Admin</title>
   <meta charset="utf-8">
@@ -257,6 +258,22 @@
       </tbody>
     </table>
     <!--Fin Module type de donnée -->
+
+    <!-- Module path src -->
+    <h2>Chemin du dossier contenant les projets :</h2>
+		<div>
+			<form class="form" id="formEditSrcPath" method="post" action="../../service/admin/edit_srcpath_bdd.php">
+	  	<?php
+				$src = RefPathDao::getSrcPath();
+				echo '<input type="text" class="form-control" name="srcPath" value="'.$src['path_refpath'].'" form="formEditSrcPath"';
+			?>
+			</form>
+		</div>
+		<div class="row">
+			<div class = 'col-md-12'>
+				<button type="submit" form="formEditSrcPath" class="btn btn-success" href="../../service/admin/edit_srcpath_bdd.php">Mise a jour</button>
+		</div>
+		<!--Fin Module path src -->
 
     </br>
     </br>

@@ -9,9 +9,9 @@ if($_POST['emailConn'] && $_POST['mdpConn']) {
 	$data = UtilisateurDao::getNomPrenomActifAdminByMailMotdepasse($email,$mdp);
 	if (isset($data['actif_utilisateur']) &&  $data['actif_utilisateur'] == 1){
 		session_start ();
-		$_SESSION['prenom'] = $donnees['prenom_utilisateur'];
-    	$_SESSION['nom'] = $donnees['nom_utilisateur'];
-    	$_SESSION['admin'] = $donnees['admin_utilisateur'];
+		$_SESSION['prenom'] = $data['prenom_utilisateur'];
+    	$_SESSION['nom'] = $data['nom_utilisateur'];
+    	$_SESSION['admin'] = $data['admin_utilisateur'];
 		header('location:./../');
 	}
 	if (isset($data['actif_utilisateur']) &&  $data['actif_utilisateur'] == 0){
@@ -20,9 +20,9 @@ if($_POST['emailConn'] && $_POST['mdpConn']) {
 	if (!isset($data['actif_utilisateur'])){
 		header('location:./../view/connection/validate/Connection_erreur.html');
 	}
-	
-	
+
+
 }else{
-    header('location:./../');  
+    header('location:./../');
 }
 ?>

@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 		<title>MNHN Cloud</title>
-		
+
 		<link rel="icon" type="image/png" href="../img/logo/logo_MNHN.png" />
 
 		<!-- CSS -->
@@ -19,13 +19,12 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		
+
 		<?php include_once (__DIR__.'/dao/projet_dao.php'); ?>
 
 	</head>
 	<body class="container">
 
-	
 		<header>
 			<div class="row">
 				<div class="col-md-12">
@@ -39,8 +38,8 @@
 					<hr class="primary">
 				</div>
 			</div>
-			
-			
+
+
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -63,8 +62,8 @@
 								}
 								?>
 							</ul>
-							</li> 
-						</ul>	
+							</li>
+						</ul>
 						<!-- à afficher en fonction du type de profile -->
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="view\admin">Admin</a></li>
@@ -75,24 +74,24 @@
 				</div>
 			</nav>
 		</header>
-		
+
 		<section class="row">
-		
+
 			<div class="col-md-4">
-			
+
 			</div>
 			<div class="col-md-8">
-			
+
 			</div>
-			
+
 		</section>
-		
+
 		<footer class="row">
 			<div class="col-lg-offset-1 col-lg-10">
 				<p class="navbar-text pull-left">© 2017 - V 0.1</p>
 			</div>
 		</footer>
-		
+
 		<!-- jQuery -->
 		<script src="../js/jquery-3.1.1.min.js"></script>
 		<!-- bootstrap js -->
