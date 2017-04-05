@@ -26,11 +26,11 @@ class FileTools
 		//Cree un repertoire dont le path est specifie en input
 		public static function makeDirectory($path){
         $log = Log::getLog();
-				$v = exec("mkdir " .$path ,$out, $err);
-				if(exec("mkdir " .$path ,$out, $err))
+				$ret = exec("mkdir " .$path ,$out, $err);
+				if($err == 0)
 					$log->info("Le dossier ".$path." a bien ete cree!");
 				else
-					$log->error("Le dossier ".$path." n'as pas pue etre cree!  : ");
+					$log->error("Le dossier ".$path." n'as pas pue etre cree!");
 		}
 
 		//Supprime le repertoire fourni en input, ainsi que tout son contenu
