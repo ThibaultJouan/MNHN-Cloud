@@ -124,7 +124,7 @@
 						echo '<td>'. $row['commentaire_projet'] . '</td>';
 						echo '<td>'. $row['actif_projet'] . '</td>';
 						echo '<td>'. $row['datecreation_projet'] . '</td>';
-						if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], 1))
+						if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], $_SESSION['id_utilisateur']))
 						{
 							echo '<td>';
 							echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-project" data-id="'.$row['id_projet'].'">Acceder au projet</a>';

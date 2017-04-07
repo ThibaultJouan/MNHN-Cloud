@@ -21,6 +21,7 @@
 		<![endif]-->
 
 		<?php include_once (__DIR__.'/dao/projet_dao.php'); ?>
+		<?php include_once (__DIR__.'/dao/projet_utilisateur_dao.php'); ?>
 
 	</head>
 	<body class="container">
@@ -58,7 +59,11 @@
 							<ul class="dropdown-menu">
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
-									echo '<li><a href="#">'. $row['libelle_projet'] . '</a><l/i>';
+									if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], 4)) {
+										echo '<li><a href=\'view/yolo/index.php'.'?yolo='.trim($row['id_projet']).'\'>'. $row['libelle_projet'] . '</a><l/i>';
+									} else {
+										echo '<li><a href=\'#\'>'. $row['libelle_projet'] . '</a><l/i>';
+									}
 								}
 								?>
 							</ul>

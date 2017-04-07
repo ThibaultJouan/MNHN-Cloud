@@ -6,12 +6,13 @@ if($_POST['emailConn'] && $_POST['mdpConn']) {
  	//$email = 'arthur@lorillard.fr';
 	//$mdp = md5('MNHN-Cloud',TRUE);
 
-	$data = UtilisateurDao::getNomPrenomActifAdminByMailMotdepasse($email,$mdp);
+	$data = UtilisateurDao::getIdNomPrenomActifAdminByMailMotdepasse($email,$mdp);
 	if (isset($data['actif_utilisateur']) &&  $data['actif_utilisateur'] == 1){
 		session_start ();
 		$_SESSION['prenom'] = $data['prenom_utilisateur'];
 		$_SESSION['nom'] = $data['nom_utilisateur'];
 		$_SESSION['admin'] = $data['admin_utilisateur'];
+		$_SESSION['id_utilisateur'] = $data['id_utilisateur'];
 		header('location:./../');
 	}
 	if (isset($data['actif_utilisateur']) &&  $data['actif_utilisateur'] == 0){
