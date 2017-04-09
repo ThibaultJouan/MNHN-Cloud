@@ -60,9 +60,19 @@
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
 									if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], 4)) {
-										echo '<li><a href=\'view/yolo/index.php'.'?yolo='.trim($row['id_projet']).'\'>'. $row['libelle_projet'] . '</a><l/i>';
+										echo '<form method="post" action="view/projets/index.php" class="inline">';
+										  echo '<input type="hidden" name="id_project" value="'.$row['id_projet'].'">';
+										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
+										   echo  $row['libelle_projet'];
+										  echo '</button></li>';
+										echo '</form>';
 									} else {
-										echo '<li><a href=\'#\'>'. $row['libelle_projet'] . '</a><l/i>';
+										echo '<form method="post" action="#" class="inline">';
+										  echo '<input type="hidden" name="id_project" value="$row[\'id_projet\']">';
+										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
+										   echo  $row['libelle_projet'];
+										  echo '</button></li>';
+										echo '</form>';
 									}
 								}
 								?>

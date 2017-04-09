@@ -3,6 +3,8 @@
 <head>
     <?php
 		session_start();
+		//A virer, pour les tests juste
+		$_SESSION['admin'] = 1;
 		if($_SESSION ['admin'] != 1){
 			header('Location: ' . '../../index.php');
 			exit(var_dump($_SESSION['admin']));
