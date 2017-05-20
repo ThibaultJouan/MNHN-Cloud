@@ -2,7 +2,7 @@
 include_once(__DIR__.'/../service/database.php');
 include_once(__DIR__.'/../log/log.php');
 class UtilisateurDao
-{   
+{
     private static $data  = null;
 
     public function __construct() {
@@ -42,8 +42,8 @@ class UtilisateurDao
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
-        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, 
-            mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
+        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur,
+            mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur)
             VALUES ( ? , ? , ? , ? , ? , ? )";
         $req = $pdo->prepare($sql);
         if($req->execute(array($nom, $prenom, $mail, $mdp, $actif, $admin)))
@@ -80,6 +80,23 @@ class UtilisateurDao
         return self::$data;
     }
 
+
+		public static function updatePwdUser($id,$pwd)
+		{
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE utilisateur SET motdepasse_utilisateur = ? WHERE id_utilisateur = ?";
+        $sth = $pdo->prepare($sql);
+				if($sth->execute(array($pwd,$id)))
+					echo " true";
+					$log ->info("Mot de passe updated pour l'utilisateur: ".$id);
+				else
+					echo " false";
+					 $log ->error("Echec Mot de passe updated pour l'utilisateur: ".$id);
+        Database::disconnect();
+        return 0;
+		}
+
     public static function switchActif($id)
     {
         $log = Log::getLog();
@@ -113,7 +130,7 @@ class UtilisateurDao
         Database::disconnect();
         return 1;
     }
-	
+
     public static function getNomPrenomActifAdminByMailMotdepasse($email,$mdp)
     {
 		$log = log::getLog();

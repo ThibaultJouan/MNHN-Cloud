@@ -57,6 +57,23 @@
     });
   </script>
 
+  <!-- edit pwd user-->
+  <script>
+    $(document).ready(function(){
+      $('#edit-pwd-user').on('show.bs.modal', function (e) {
+        var rowid = $(e.relatedTarget).data('id');
+        $.ajax({
+          type : 'post',
+          url : './update/edit_pwd_user.php', //Here you will fetch records
+          data :  'rowid='+ rowid, //Pass $id
+          success : function(data){
+            $('#fetched-data-pwd-user').html(data);//Show fetched data from database
+          }
+        });
+      });
+    });
+  </script>
+
   <!-- active/desactive experience -->
   <script>
     $(document).ready(function(){
@@ -114,6 +131,24 @@
     </div>
     <!-- Fin edit projet -->
 
+    <!-- Edit pwd user-->
+    <div class="modal fade" id="edit-pwd-user" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Changer mot de passe utilisateur</h4>
+          </div>
+          <div class="modal-body">
+            <div class="fetched-data" id="fetched-data-pwd-user"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin edit pwd user-->
+
     <!-- Active/desactive experience -->
     <div class="modal fade" id="desactive-experience" role="dialog">
       <div class="modal-dialog">
@@ -162,6 +197,7 @@
           echo '<td>'. $row['datecreation_utilisateur'] . '</td>';
           echo '<td>';
           echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Aviter/Desactiver utilisateur</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer mot de passe utilisateur</a>';
           echo '</td>';
           echo '</tr>';
         }
