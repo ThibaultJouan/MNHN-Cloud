@@ -3,8 +3,6 @@ include_once (__DIR__.'/../dao/utilisateur_dao.php');
 if($_POST['emailConn'] && $_POST['mdpConn']) {
 	$email = $_POST['emailConn'];
     $mdp = md5($_POST['mdpConn'],TRUE);
- 	//$email = 'arthur@lorillard.fr';
-    //$mdp = md5('MNHN-Cloud',TRUE);
 
 	$data = UtilisateurDao::getNomPrenomActifAdminByMailMotdepasse($email,$mdp);
 	if (isset($data['actif_utilisateur']) &&  $data['actif_utilisateur'] == 1){

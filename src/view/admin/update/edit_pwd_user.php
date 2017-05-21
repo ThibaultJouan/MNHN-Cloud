@@ -28,7 +28,7 @@
 									<?php
 									echo '<input type="hidden" class="form-control " name="idUser" value = "'.$id.'" form="formPwdUser"/>';
 									?>
-									<input type="password" class="form-control " name="pwdUser" value = "Nouveau mot de passe" form="formPwdUser"/>
+									<input type="password" class="form-control " name="pwdUser" value = "MNHN-Could" form="formPwdUser"/>
 								</div>
 							</div>
 						</form>
