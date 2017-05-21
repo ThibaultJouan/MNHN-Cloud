@@ -23,12 +23,11 @@
 
 <?php
 session_start();
-if($_SESSION ['admin'] != 1){
+if($_SESSION ['admin'] != 1 || !isset($_POST['rowid'])|| !$_POST['rowid']){
 	header('Location: ' . '../../../index.php');
 	exit();
 }
 include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
-if($_POST['rowid']) {
     $id = $_POST['rowid']; //escape string
     $row = UtilisateurDao::getNomPrenomActifById($id);
     ?>
