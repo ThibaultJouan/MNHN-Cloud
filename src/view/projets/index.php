@@ -44,8 +44,7 @@
       <tbody>
 				<?php
 				foreach(ProjetDao::selectAll() as $row) {
-					if($row['id_projet'] == $_POST['id_project'])
-					{
+					if($row['id_projet'] == $_POST['id_project']) {
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
 						echo '<h3>Experiences : </h3>';
 						foreach(RefExperienceDao::selectAllActif() as $exp) {
