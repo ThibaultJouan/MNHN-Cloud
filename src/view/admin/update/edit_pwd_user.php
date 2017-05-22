@@ -5,10 +5,10 @@
 <body>
 		<?php
 		session_start();
-		if($_SESSION ['admin'] != 1){
-			header('Location: ' . '../../../index.php');
-			exit();
-		}
+		//if($_SESSION ['admin'] != 1){
+		//	header('Location: ' . '../../../index.php');
+		//	exit();
+		//}
 		include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
 		if($_POST['rowid']) {
 			$id = $_POST['rowid'];
