@@ -49,7 +49,7 @@
                         echo '<td>'. $row['nom_utilisateur'] . '</td>';
                         echo '<td>'. $row['mail_utilisateur'] . '</td>';
                         echo '<td>';
-                        if(Projet2UtilisateurDAO::isJoin($id, $row['id_utilisateur']) == 0){
+                        if(Projet2UtilisateurDao::isJoin($id, $row['id_utilisateur']) == 0){
                             echo '<label><input type="checkbox" name="'.$row['id_utilisateur'].'" value="yes" form="formProject2Utilisateur">Lié</label>';
                         }
                         else{

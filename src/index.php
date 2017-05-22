@@ -66,33 +66,13 @@
 							<ul class="dropdown-menu">
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
-									if(Projet2UtilisateurDAO::isJoin($row['id_projet'], $_SESSION['id_utilisateur']) == 1){	
+									if(Projet2UtilisateurDao::isJoin($row['id_projet'], $_SESSION['id_utilisateur']) == 1){
 										?>
 										<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
 										<?php
-									} 
-								}?>
-								
-								<!--
-									
-									if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], 4)) {
-										echo '<form method="post" action="view/projets/index.php" class="inline">';
-										  echo '<input type="hidden" name="id_project" value="'.$row['id_projet'].'">';
-										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
-										   echo  $row['libelle_projet'];
-										  echo '</button></li>';
-										echo '</form>';
-									} else {
-										echo '<form method="post" action="#" class="inline">';
-										  echo '<input type="hidden" name="id_project" value="$row[\'id_projet\']">';
-										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
-										   echo  $row['libelle_projet'];
-										  echo '</button></li>';
-										echo '</form>';
 									}
-								}
-								?>
-								-->
+								}?>
+
 							</ul>
 							</li>
 						</ul>

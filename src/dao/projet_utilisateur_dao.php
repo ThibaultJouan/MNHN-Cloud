@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__.'/../service/database.php');
 include_once(__DIR__.'/../log/log.php');
-class Projet2UtilisateurDAO
+class Projet2UtilisateurDao
 {
     private static $data  = null;
 
@@ -15,11 +15,11 @@ class Projet2UtilisateurDAO
         $log->info('idProject : '.$idProject);
         $log->info('idUser : '.$idUser);
         $pdo = Database::connect();
-        $sql = "INSERT INTO projet2utilisateur (id_projet, id_utilisateur) 
+        $sql = "INSERT INTO projet2utilisateur (id_projet, id_utilisateur)
             VALUES ( ? , ?)";
         $sth = $pdo->prepare($sql);
         if($sth->execute(array($idProject,$idUser)))
-            $log->info("Relation projet: ".$idProject." utilisateur: ".$idUser." créé!");  
+            $log->info("Relation projet: ".$idProject." utilisateur: ".$idUser." créé!");
         Database::disconnect();
         return 1;
     }

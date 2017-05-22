@@ -49,7 +49,7 @@
                         echo '<td>'. $row['commentaire_refexperience'] . '</td>';
                         echo '<td>'. $row['datecreation_refexperience'] . '</td>';
                         echo '<td>';
-                        if(Projet2RefExperienceDAO::isJoin($id, $row['id_refexperience']) == 0){
+                        if(Projet2RefExperienceDao::isJoin($id, $row['id_refexperience']) == 0){
                             echo '<label><input type="checkbox" name="'.$row['id_refexperience'].'" value="yes" form="formProject2Experience">Lié</label>';
                         }
                         else{
