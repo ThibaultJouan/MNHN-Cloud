@@ -91,6 +91,7 @@
 							<li><a href="view\admin">Admin</a></li>
 							<!-- à mofifier en foncion de la connection -->
 							<li><a href="view\profile">Mon profile</a></li>
+							<li><a href="service\deconnexion.php">Déconnexion</a></li>
 						</ul>
 					</div>
 				</div>
