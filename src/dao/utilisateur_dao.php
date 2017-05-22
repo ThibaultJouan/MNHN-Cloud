@@ -130,11 +130,7 @@ class UtilisateurDao
         return 1;
     }
 
-<<<<<<< HEAD
     public static function getIdNomPrenomActifAdminByMailMotdepasse($email,$mdp)
-=======
-    public static function getNomPrenomActifAdminByMailMotdepasse($email,$mdp)
->>>>>>> Branche_Gabriel
     {
 		$log = log::getLog();
         $pdo = Database::connect();
