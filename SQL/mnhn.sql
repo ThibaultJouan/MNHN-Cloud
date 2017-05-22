@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 22 Mai 2017 à 10:30
+-- Généré le :  Lun 22 Mai 2017 à 10:34
 -- Version du serveur :  5.5.47-MariaDB
 -- Version de PHP :  5.5.33
 
@@ -50,13 +50,6 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `actif_projet` tinyint(1) NOT NULL,
   `datecreation_projet` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `projet`
---
-
-INSERT INTO `projet` (`id_projet`, `libelle_projet`, `commentaire_projet`, `actif_projet`, `datecreation_projet`) VALUES
-(1, 'test projet', 'commentaire de projet test', 1, '2017-05-22 08:27:50');
 
 -- --------------------------------------------------------
 
