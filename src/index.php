@@ -3,7 +3,7 @@
 	<head>
 	    <?php
 			session_start();
-			if(isset($_SESSION ['id_utilisateur'])){
+			if(!isset($_SESSION['id_utilisateur'])){
 				header('Location: ' . './view/connection');
 				exit(var_dump($_SESSION['admin']));
 			}
@@ -90,7 +90,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="view\admin">Admin</a></li>
 							<!-- à mofifier en foncion de la connection -->
-							<li><a href="admin.php">Mon profile</a></li>
+							<li><a href="view\profile">Mon profile</a></li>
 						</ul>
 					</div>
 				</div>
