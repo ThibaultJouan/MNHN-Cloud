@@ -10,7 +10,7 @@ class Database
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
 
-    private static $dbUserPassword = 'root';
+    private static $dbUserPassword = 'toor';
 
     private static $cont  = null;
 
