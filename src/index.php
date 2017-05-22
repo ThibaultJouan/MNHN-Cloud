@@ -3,7 +3,7 @@
 	<head>
 	    <?php
 			session_start();
-			if(isset($_SESSION ['id_utilisateur'])){
+			if(!isset($_SESSION['id_utilisateur'])){
 				header('Location: ' . './view/connection');
 				exit(var_dump($_SESSION['admin']));
 			}
