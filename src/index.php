@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 		<title>MNHN Cloud</title>
-		
+
 		<link rel="icon" type="image/png" href="../img/logo/logo_MNHN.png" />
 
 		<!-- CSS -->
@@ -19,13 +19,13 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		
+
 		<?php include_once (__DIR__.'/dao/projet_dao.php'); ?>
+		<?php include_once (__DIR__.'/dao/projet_utilisateur_dao.php'); ?>
 
 	</head>
 	<body class="container">
 
-	
 		<header>
 			<div class="row">
 				<div class="col-md-12">
@@ -39,8 +39,8 @@
 					<hr class="primary">
 				</div>
 			</div>
-			
-			
+
+
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -59,12 +59,26 @@
 							<ul class="dropdown-menu">
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
-									echo '<li><a href="#">'. $row['libelle_projet'] . '</a><l/i>';
+									if(1 == Projet2UtilisateurDAO::isJoin($row['id_projet'], 4)) {
+										echo '<form method="post" action="view/projets/index.php" class="inline">';
+										  echo '<input type="hidden" name="id_project" value="'.$row['id_projet'].'">';
+										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
+										   echo  $row['libelle_projet'];
+										  echo '</button></li>';
+										echo '</form>';
+									} else {
+										echo '<form method="post" action="#" class="inline">';
+										  echo '<input type="hidden" name="id_project" value="$row[\'id_projet\']">';
+										  echo '<li><button type="submit" name="submit_param" value="submit_value" class="link-button">';
+										   echo  $row['libelle_projet'];
+										  echo '</button></li>';
+										echo '</form>';
+									}
 								}
 								?>
 							</ul>
-							</li> 
-						</ul>	
+							</li>
+						</ul>
 						<!-- à afficher en fonction du type de profile -->
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="view\admin">Admin</a></li>
@@ -75,24 +89,24 @@
 				</div>
 			</nav>
 		</header>
-		
+
 		<section class="row">
-		
+
 			<div class="col-md-4">
-			
+
 			</div>
 			<div class="col-md-8">
-			
+
 			</div>
-			
+
 		</section>
-		
+
 		<footer class="row">
 			<div class="col-lg-offset-1 col-lg-10">
 				<p class="navbar-text pull-left">© 2017 - V 0.1</p>
 			</div>
 		</footer>
-		
+
 		<!-- jQuery -->
 		<script src="../js/jquery-3.1.1.min.js"></script>
 		<!-- bootstrap js -->

@@ -2,7 +2,7 @@
 include_once(__DIR__.'/../service/database.php');
 include_once(__DIR__.'/../log/log.php');
 class UtilisateurDao
-{   
+{
     private static $data  = null;
 
     public function __construct() {
@@ -42,9 +42,7 @@ class UtilisateurDao
         $actif = 1;
         $admin = 0;
         $pdo = Database::connect();
-        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, 
-            mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) 
-            VALUES ( ? , ? , ? , ? , ? , ? )";
+        $sql = "INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, mail_utilisateur, motdepasse_utilisateur, actif_utilisateur, admin_utilisateur) VALUES ( ? , ? , ? , ? , ? , ? )";
         $req = $pdo->prepare($sql);
         if($req->execute(array($nom, $prenom, $mail, $mdp, $actif, $admin)))
             $log->info("Création de l'utilisateur ".$prenom." ".$nom);
@@ -80,6 +78,24 @@ class UtilisateurDao
         return self::$data;
     }
 
+
+		public static function updatePwdUser($id,$pwd)
+		{
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE utilisateur SET motdepasse_utilisateur = ? WHERE id_utilisateur = ?";
+        $sth = $pdo->prepare($sql);
+				if($sth->execute([$pwd,$id]))
+					$log ->info("Mot de passe updated pour l'utilisateur: ".$id);
+				else{
+					 $log ->error("Echec Mot de passe updated pour l'utilisateur: ".$id);
+            Database::disconnect();
+            return 0;
+				}
+        Database::disconnect();
+        return 1;
+		}
+
     public static function switchActif($id)
     {
         $log = Log::getLog();
@@ -113,12 +129,16 @@ class UtilisateurDao
         Database::disconnect();
         return 1;
     }
-	
+
+<<<<<<< HEAD
+    public static function getIdNomPrenomActifAdminByMailMotdepasse($email,$mdp)
+=======
     public static function getNomPrenomActifAdminByMailMotdepasse($email,$mdp)
+>>>>>>> Branche_Gabriel
     {
 		$log = log::getLog();
         $pdo = Database::connect();
-        $sql = "SELECT prenom_utilisateur, nom_utilisateur, actif_utilisateur, admin_utilisateur FROM utilisateur WHERE mail_utilisateur = ? and motdepasse_utilisateur = ? LIMIT 1 ";
+        $sql = "SELECT prenom_utilisateur, nom_utilisateur, actif_utilisateur, admin_utilisateur, id_utilisateur FROM utilisateur WHERE mail_utilisateur = ? and motdepasse_utilisateur = ? LIMIT 1 ";
         $sth = $pdo->prepare($sql);
 		$sth->execute(array($email,$mdp));
         self::$data = $sth->fetch();

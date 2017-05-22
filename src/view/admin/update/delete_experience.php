@@ -22,20 +22,25 @@
   <body>
 
 <?php
+session_start();
+if($_SESSION ['admin'] != 1){
+	header('Location: ' . '../../../index.php');
+	exit();
+}
 include_once (__DIR__.'/../../../dao/refexperience_dao.php');
 if($_POST['rowid']) {
     $id = $_POST['rowid']; //escape string
     $row = RefExperienceDao::getLibelleActifById($id);
     ?>
     <div>
-    Voulez-vous 
+    Voulez-vous
     <?php
     if($row['actif_refexperience'] == 1){
         echo "désactiver ";
      }
      else{
          echo "activer ";
-     } 
+     }
      echo $row['libelle_refexperience']."?";
      ?>
      </div>
@@ -52,7 +57,7 @@ if($_POST['rowid']) {
                     }
                     else{
                         echo "Active ";
-                    } 
+                    }
                     ?>
                 </a>
             </p>
@@ -61,7 +66,7 @@ if($_POST['rowid']) {
             <p>
                 <a href="index.php" class="btn btn-warning">Annule</a>
             </p>
-        </div>  
+        </div>
      </div>
      <?php
      }
