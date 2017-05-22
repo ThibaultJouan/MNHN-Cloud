@@ -13,6 +13,13 @@
 		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
 		include_once (__DIR__.'/../../dao/projet_utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_refexperience_dao.php');
+		
+		//ajout de ALO
+		$id_project = $_GET["id"];
+		
+		if(Projet2UtilisateurDAO::isJoin($id_project, $_SESSION['id_utilisateur']) !=1){
+			header('Location: ' . '../../index.php');
+		}
 		?>
 
 		<title>Vue projet</title>
@@ -44,7 +51,7 @@
       <tbody>
 				<?php
 				foreach(ProjetDao::selectAll() as $row) {
-					if($row['id_projet'] == $_POST['id_project']) {
+					if($row['id_projet'] == $id_project) {
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
 						echo '<h3>Experiences : </h3>';
 						foreach(RefExperienceDao::selectAllActif() as $exp) {
