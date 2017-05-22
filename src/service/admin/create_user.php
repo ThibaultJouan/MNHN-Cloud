@@ -4,7 +4,7 @@ if($_POST['prenomInscr'] && $_POST['nomInscr'] && $_POST['emailInscr'] && $_POST
     $prenom = $_POST['prenomInscr'];
 	$nom = $_POST['nomInscr'];
 	$email = $_POST['emailInscr'];
-    $mdp = md5($_POST['mdpInscr'],TRUE);
+    $mdp = $_POST['mdpInscr'];
 
     $log = Log::getLog();
     $successId = UtilisateurDao::getIdByMail($email);
