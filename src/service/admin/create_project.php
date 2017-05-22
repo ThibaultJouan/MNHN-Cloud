@@ -10,7 +10,7 @@ if($_POST['libelleProject']) {
     $success = ProjetDao::createProject($libelle,$commentaire);
 		if($success){
 				$src = RefPathDao::getSrcPath();
-				$path = "/var/www/html/MNHN-Cloud/test/";
+				$path = "/volume1/Projets/";
 				$path = $path."".$libelle;
 				FileTools::makeDirectory($path);
 				header('location:../../view/admin/validate/create_project_validate.html');

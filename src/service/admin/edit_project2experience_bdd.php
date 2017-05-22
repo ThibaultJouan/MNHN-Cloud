@@ -13,7 +13,7 @@ if($_POST['idProject']) {
         if($_POST[$idExperience]=="yes"){
 						$row = RefExperienceDao::getLibelleActifById($idExperience);
 						$libelleExp = $row["libelle_experience"];
-						$path = "/var/www/html/MNHN-Cloud/test/";
+						$path = "/volume1/Projets";
 						$path = $path.$libelleProject.$libelleExp;
 						FileTools::makeDirectory($path);
 						FileTools::makeDirectory($path."/Video");
