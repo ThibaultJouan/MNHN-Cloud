@@ -28,4 +28,10 @@ Pour lancer les tests  lancer les commandes suivantes dans le dossier test:
 		const BASE = "";
 	}
 
+<<<<<<< HEAD
 ?>```
+
+ceci est une modification pour un commit de courtoisie
+=======
+?>```
+>>>>>>> master

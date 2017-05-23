@@ -3,6 +3,7 @@ include_once (__DIR__.'/../../dao/projet_refexperience_dao.php');
 include_once (__DIR__.'/../../dao/refexperience_dao.php');
 include_once (__DIR__.'/../../dao/projet_dao.php');
 include_once (__DIR__.'/../fileTools.php');
+include_once (__DIR__.'/../configPath.php');
 if($_POST['idProject']) {
     $idProject = $_POST['idProject'];
 		$row = ProjetDao::getLibelleById($idProject);
@@ -13,7 +14,7 @@ if($_POST['idProject']) {
         if($_POST[$idExperience]=="yes"){
 						$row = RefExperienceDao::getLibelleActifById($idExperience);
 						$libelleExp = $row["libelle_experience"];
-						$path = "/volume1/Projets";
+						$path = PATH_PROJET;
 						$path = $path.$libelleProject.$libelleExp;
 						FileTools::makeDirectory($path);
 						FileTools::makeDirectory($path."/Video");
