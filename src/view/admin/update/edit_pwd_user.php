@@ -12,7 +12,7 @@
 		include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
 		if($_POST['rowid']) {
 			$id = $_POST['rowid'];
-			$row = UtilisateurDao::getNomPrenomActifById($id);
+			$row = UtilisateurDao::getNomPrenomMailMdpById($id);
     ?>
     <div class="container">
 		<div class="row">
@@ -21,14 +21,15 @@
 					<div class="service-box">
 						<form class="form" id="formPwdUser" method="post" action="../../service/admin/edit_pwd_user_bdd.php">
 							<?php
-								echo	'<p class="text-muted">Nouveau mot de passe de '.$row['prenom'].' '.$row['nom'].'</p>';
+								echo	'<p class="text-muted">Edition du compte de '.$row['prenom_utilisateur'].' '.$row['nom_utilisateur'].'</p>';
 							?>
 							<div class="row">
 								<div class="col-md-5">
 									<?php
 									echo '<input type="hidden" class="form-control " name="idUser" value = "'.$id.'" form="formPwdUser"/>';
-									?>
-									<input type="password" class="form-control " name="pwdUser" value = "MNHN-Could" form="formPwdUser"/>
+
+									echo '<input type="password" class="form-control " name="pwdUser" value = "'.$row['motdepasse_utilisateur'].'" form="formPwdUser"/>';
+										?>
 								</div>
 							</div>
 						</form>

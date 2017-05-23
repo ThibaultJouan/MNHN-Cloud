@@ -10,7 +10,6 @@
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
-		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
 		include_once (__DIR__.'/../../dao/refpath_dao.php');
     ?>
   <title>Page Admin</title>
@@ -269,31 +268,6 @@
       </tbody>
     </table>
     <!--Fin Module ref experience -->
-
-    <!-- Module type de donnée -->
-    <h2>Types de donnée</h2>
-    <p>
-      <a href="./create/create_reftypedonnee.html" class="btn btn-success">Créer un type de donnée</a>
-    </p>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Libellé</th>
-          <th>Commentaire</th>
-        </tr>
-      </thead>
-      <tbody>
-	      <?php
-        foreach(RefTypeDonneeDao::selectAll() as $row){
-          echo '<tr>';
-          echo '<td>'. $row['libelle_reftypedonnee'] . '</td>';
-          echo '<td>'. $row['commentaire_reftypedonnee'] . '</td>';
-          echo '<tr>';
-        }
-	      ?>
-      </tbody>
-    </table>
-    <!--Fin Module type de donnée -->
 
     <!-- Module path src -->
     <h2>Chemin du dossier contenant les projets :</h2>
