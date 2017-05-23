@@ -172,7 +172,7 @@
     <!-- Module utilisateur -->
     <h2>Utilisateurs</h2>
     <p>
-      <a href="./create/create_user.html" class="btn btn-success">Créé un utilisateur</a>
+      <a href="./create/create_user.html" class="btn btn-success">Créer un utilisateur</a>
     </p>
     <table class="table table-striped table-bordered">
       <thead>
@@ -209,7 +209,7 @@
     <!-- Module projet -->
     <h2>Projets</h2>
     <p>
-      <a href="./create/create_project.html" class="btn btn-success">Créé un projet</a>
+      <a href="./create/create_project.html" class="btn btn-success">Créer un projet</a>
     </p>
     <table class="table table-striped table-bordered">
       <thead>
@@ -241,7 +241,7 @@
     <!-- Module ref experience -->
     <h2>Experiences</h2>
     <p>
-      <a href="./create/create_experience.html" class="btn btn-success">Créé une experience</a>
+      <a href="./create/create_experience.html" class="btn btn-success">Créer une experience</a>
     </p>
     <table class="table table-striped table-bordered">
       <thead>
@@ -261,7 +261,7 @@
           echo '<td>'. $row['actif_refexperience'] . '</td>';
           echo '<td>'. $row['datecreation_refexperience'] . '</td>';
           echo '<td>';
-          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Aviter/Desactiver experience</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Activer/Desactiver experience</a>';
           echo '</td>';
           echo '</tr>';
         }
@@ -273,7 +273,7 @@
     <!-- Module type de donnée -->
     <h2>Types de donnée</h2>
     <p>
-      <a href="./create/create_reftypedonnee.html" class="btn btn-success">Créé un type de donnée</a>
+      <a href="./create/create_reftypedonnee.html" class="btn btn-success">Créer un type de donnée</a>
     </p>
     <table class="table table-striped table-bordered">
       <thead>
