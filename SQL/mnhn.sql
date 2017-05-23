@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `projet2refexperience` (
 --
 
 CREATE TABLE IF NOT EXISTS `projet2utilisateur` (
-  `chef_projet` tinyint(1) DEFAULT NULL,
+  `chef_projet` tinyint(1) DEFAULT '0',
   `id_utilisateur` int(11) NOT NULL,
   `id_projet` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

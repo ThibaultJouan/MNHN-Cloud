@@ -21,7 +21,7 @@
 					<div class="service-box">
 						<form class="form" id="formPwdUser" method="post" action="../../service/admin/edit_pwd_user_bdd.php">
 							<?php
-								echo	'<p class="text-muted">Nouveau mot de passe de '.$row['prenom'].' '.$row['nom'].'</p>';
+								echo	'<p class="text-muted">Nouveau mot de passe de '.$row['prenom_utilisateur'].' '.$row['nom_utilisateur'].'</p>';
 							?>
 							<div class="row">
 								<div class="col-md-5">
