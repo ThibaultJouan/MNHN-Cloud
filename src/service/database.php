@@ -9,7 +9,8 @@ class Database
     private static $dbName = 'MNHN' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
-    private static $dbUserPassword = 'toor';
+
+    private static $dbUserPassword = '';
 
     private static $cont  = null;
 

@@ -10,7 +10,12 @@
     </head>
     <body>
         <?php
-        include_once (__DIR__.'/../../../dao/projet_dao.php');
+ 				session_start();
+				if($_SESSION ['admin'] != 1){
+					header('Location: ' . '../../../index.php');
+					exit();
+				}
+ 				include_once (__DIR__.'/../../../dao/projet_dao.php');
         include_once (__DIR__.'/../../../dao/refexperience_dao.php');
         include_once (__DIR__.'/../../../dao/projet_refexperience_dao.php');
         if($_POST['idProject']) {
@@ -33,18 +38,18 @@
                     <tr>
                         <th>Nom</th>
                         <th>Commentaire</th>
-                        <th>Date creation</th>                
+                        <th>Date creation</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+					<?php
                     foreach(RefExperienceDao::selectAllActif() as $row){
                         echo '<tr>';
                         echo '<td>'. $row['libelle_refexperience'] . '</td>';
                         echo '<td>'. $row['commentaire_refexperience'] . '</td>';
                         echo '<td>'. $row['datecreation_refexperience'] . '</td>';
                         echo '<td>';
-                        if(Projet2RefExperienceDAO::isJoin($id, $row['id_refexperience']) == 0){
+                        if(Projet2RefExperienceDao::isJoin($id, $row['id_refexperience']) == 0){
                             echo '<label><input type="checkbox" name="'.$row['id_refexperience'].'" value="yes" form="formProject2Experience">Lié</label>';
                         }
                         else{
@@ -53,7 +58,7 @@
                         echo '</td>';
                         echo '</tr>';
                     }
-                    ?>
+					?>
                 </tbody>
             </table>
             <div class="row">
@@ -65,7 +70,7 @@
                     <p>
                         <a href="../index.php" class="btn btn-warning">Annule</a>
                     </p>
-                </div>  
+                </div>
             </div>
         </div>
         <?php

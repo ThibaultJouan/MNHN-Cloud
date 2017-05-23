@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.4.7
+-- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 26 Janvier 2017 à 10:37
--- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Client :  localhost
+-- Généré le :  Lun 22 Mai 2017 à 10:34
+-- Version du serveur :  5.5.47-MariaDB
+-- Version de PHP :  5.5.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,14 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `mnhn`
+-- Base de données :  `MNHN`
 --
-
--- CREATE DATABASE MNHN;
-
 
 -- --------------------------------------------------------
 
@@ -29,12 +26,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `donnee`
 --
 
-CREATE TABLE `donnee` (
+CREATE TABLE IF NOT EXISTS `donnee` (
   `id_donnee` int(11) NOT NULL,
   `nomfichier_donnee` varchar(25) NOT NULL,
   `commentaire_donnee` text,
   `actif_donnee` tinyint(1) NOT NULL,
-  `datecreation_donnee` date NOT NULL,
+  `datecreation_donnee` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_utilisateur` int(11) NOT NULL,
   `id_projet` int(11) NOT NULL,
   `id_reftypedonnee` int(11) NOT NULL
@@ -46,13 +43,13 @@ CREATE TABLE `donnee` (
 -- Structure de la table `projet`
 --
 
-CREATE TABLE `projet` (
+CREATE TABLE IF NOT EXISTS `projet` (
   `id_projet` int(11) NOT NULL,
   `libelle_projet` varchar(25) NOT NULL,
   `commentaire_projet` text,
   `actif_projet` tinyint(1) NOT NULL,
-  `datecreation_projet` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `datecreation_projet` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,7 +57,7 @@ CREATE TABLE `projet` (
 -- Structure de la table `projet2refexperience`
 --
 
-CREATE TABLE `projet2refexperience` (
+CREATE TABLE IF NOT EXISTS `projet2refexperience` (
   `id_projet` int(11) NOT NULL,
   `id_refexperience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -71,7 +68,7 @@ CREATE TABLE `projet2refexperience` (
 -- Structure de la table `projet2utilisateur`
 --
 
-CREATE TABLE `projet2utilisateur` (
+CREATE TABLE IF NOT EXISTS `projet2utilisateur` (
   `id_utilisateur` int(11) NOT NULL,
   `id_projet` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -82,12 +79,12 @@ CREATE TABLE `projet2utilisateur` (
 -- Structure de la table `refexperience`
 --
 
-CREATE TABLE `refexperience` (
+CREATE TABLE IF NOT EXISTS `refexperience` (
   `id_refexperience` int(11) NOT NULL,
   `libelle_refexperience` varchar(25) NOT NULL,
   `commentaire_refexperience` text,
   `actif_refexperience` tinyint(1) NOT NULL,
-  `datecreation_refexperience` date NOT NULL
+  `datecreation_refexperience` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -96,7 +93,7 @@ CREATE TABLE `refexperience` (
 -- Structure de la table `reftypedonnee`
 --
 
-CREATE TABLE `reftypedonnee` (
+CREATE TABLE IF NOT EXISTS `reftypedonnee` (
   `id_reftypedonnee` int(11) NOT NULL,
   `libelle_reftypedonnee` varchar(25) NOT NULL,
   `commentaire_reftypedonnee` text NOT NULL
@@ -108,15 +105,15 @@ CREATE TABLE `reftypedonnee` (
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id_utilisateur` int(11) NOT NULL,
   `nom_utilisateur` varchar(35) NOT NULL,
   `prenom_utilisateur` varchar(35) NOT NULL,
   `mail_utilisateur` varchar(50) NOT NULL,
   `motdepasse_utilisateur` varchar(25) NOT NULL,
   `actif_utilisateur` tinyint(1) NOT NULL,
-  `datecreation_utilisateur` date NOT NULL,
-  `admin_utilisateur` tinyint(1) DEFAULT NULL
+  `datecreation_utilisateur` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin_utilisateur` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

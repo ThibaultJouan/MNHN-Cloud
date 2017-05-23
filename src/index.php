@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
+	    <?php
+			session_start();
+			if(!isset($_SESSION['id_utilisateur'])){
+				header('Location: ' . './view/connection');
+				exit(var_dump($_SESSION['admin']));
+			}
+		?>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 		<title>MNHN Cloud</title>
+
+		<link rel="icon" type="image/png" href="../img/logo/logo_MNHN.png" />
 
 		<!-- CSS -->
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -17,13 +26,13 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		
+
 		<?php include_once (__DIR__.'/dao/projet_dao.php'); ?>
+		<?php include_once (__DIR__.'/dao/projet_utilisateur_dao.php'); ?>
 
 	</head>
 	<body class="container">
 
-	
 		<header>
 			<div class="row">
 				<div class="col-md-12">
@@ -37,8 +46,8 @@
 					<hr class="primary">
 				</div>
 			</div>
-			
-			
+
+
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -57,40 +66,47 @@
 							<ul class="dropdown-menu">
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
-									echo '<li><a href="#">'. $row['libelle_projet'] . '</a><l/i>';
-								}
-								?>
+									if(Projet2UtilisateurDao::isJoin($row['id_projet'], $_SESSION['id_utilisateur']) == 1){
+										?>
+										<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
+										<?php
+									}
+								}?>
+
 							</ul>
-							</li> 
-						</ul>	
+							</li>
+						</ul>
 						<!-- à afficher en fonction du type de profile -->
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="admin.php">Admin</a></li>
+							<?php if($_SESSION ['admin'] == 1){
+								echo '<li><a href="view\admin">Admin</a></li>';
+							}?>
 							<!-- à mofifier en foncion de la connection -->
-							<li><a href="admin.php">Mon profile</a></li>
+							<li><a href="view\profile">Mon profile</a></li>
+							<li><a href="service\deconnexion.php">Déconnexion</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 		</header>
-		
+
 		<section class="row">
-		
+
 			<div class="col-md-4">
-			
+
 			</div>
 			<div class="col-md-8">
-			
+
 			</div>
-			
+
 		</section>
-		
+
 		<footer class="row">
 			<div class="col-lg-offset-1 col-lg-10">
 				<p class="navbar-text pull-left">© 2017 - V 0.1</p>
 			</div>
 		</footer>
-		
+
 		<!-- jQuery -->
 		<script src="../js/jquery-3.1.1.min.js"></script>
 		<!-- bootstrap js -->

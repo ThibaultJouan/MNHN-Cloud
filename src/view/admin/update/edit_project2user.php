@@ -10,10 +10,15 @@
     </head>
     <body>
 		<?php
-        include_once (__DIR__.'/../../../dao/projet_dao.php');
-        include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
-        include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
-        if($_POST['idProject']) {
+	 		session_start();
+			if($_SESSION ['admin'] != 1){
+				header('Location: ' . '../../../index.php');
+				exit();
+			}
+			include_once (__DIR__.'/../../../dao/projet_dao.php');
+      include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
+      include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
+      if($_POST['idProject']) {
 		?>
 		<div class="container">
             <?php
@@ -33,7 +38,7 @@
                     <tr>
                         <th>Prenom</th>
                         <th>Nom</th>
-                        <th>Mail</th>                
+                        <th>Mail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,7 +49,7 @@
                         echo '<td>'. $row['nom_utilisateur'] . '</td>';
                         echo '<td>'. $row['mail_utilisateur'] . '</td>';
                         echo '<td>';
-                        if(Projet2UtilisateurDAO::isJoin($id, $row['id_utilisateur']) == 0){
+                        if(Projet2UtilisateurDao::isJoin($id, $row['id_utilisateur']) == 0){
                             echo '<label><input type="checkbox" name="'.$row['id_utilisateur'].'" value="yes" form="formProject2Utilisateur">Lié</label>';
                         }
                         else{
@@ -65,7 +70,7 @@
                     <p>
                         <a href="../index.php" class="btn btn-warning">Annule</a>
                     </p>
-                </div>  
+                </div>
             </div>
         </div>
         <?php

@@ -8,12 +8,13 @@ if(isset($_POST['idProject']) && isset($_POST['libelleProject']) && isset($_POST
         $actif = 1;
     else
         $actif = 0;
-    if(ProjetDAO::updateProject($id,$libelle,$comment,$actif))
+    if(ProjetDao::updateProject($id,$libelle,$comment,$actif)){
         header('location:../../view/admin/validate/edit_project_validate.html');
+		}
     else
-        header('location:../../view/admin/validate/edit_project_denied.html');  
+        header('location:../../view/admin/validate/edit_project_denied.html');
 }
 else{
-    header('location:../../view/admin/validate/edit_project_denied.html');  
+    header('location:../../view/admin/validate/edit_project_denied.html');
 }
 ?>
