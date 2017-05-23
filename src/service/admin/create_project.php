@@ -10,15 +10,9 @@ if($_POST['libelleProject']) {
     $success = ProjetDao::createProject($libelle,$commentaire);
 		if($success){
 				$src = RefPathDao::getSrcPath();
-				$path = $src['path_refpath'];
+				$path = "/volume1/Projets/";
 				$path = $path."".$libelle;
 				FileTools::makeDirectory($path);
-				$pathA = $path."/A";
-				FileTools::makeDirectory($pathA);
-				$pathB = $path."/B";
-				FileTools::makeDirectory($pathB);
-				$pathC = $path."/C";
-				FileTools::makeDirectory($pathC);
 				header('location:../../view/admin/validate/create_project_validate.html');
 		} else
         header('location:../../view/admin/validate/create_project_denied.html');

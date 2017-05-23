@@ -13,11 +13,11 @@
 		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
 		include_once (__DIR__.'/../../dao/projet_utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_refexperience_dao.php');
-		
+
 		//ajout de ALO
 		$id_project = $_GET["id"];
-		
-		if(Projet2UtilisateurDAO::isJoin($id_project, $_SESSION['id_utilisateur']) !=1){
+
+		if(Projet2UtilisateurDao::isJoin($id_project, $_SESSION['id_utilisateur']) !=1){
 			header('Location: ' . '../../index.php');
 		}
 		?>
@@ -55,7 +55,7 @@
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
 						echo '<h3>Experiences : </h3>';
 						foreach(RefExperienceDao::selectAllActif() as $exp) {
-							if(1 == Projet2RefExperienceDAO::isJoin(1, 1)){
+							if(1 == Projet2RefExperienceDao::isJoin(1, 1)){
 								echo '<tr>';
 								echo '<td>'. $exp['libelle_refexperience'] . '</td>';
 								echo '<td>'. $exp['datecreation_refexperience'] . '</td>';
