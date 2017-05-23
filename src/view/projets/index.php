@@ -67,12 +67,13 @@
 								echo '</tr>';
 							}
 						}
-						break;
+					break;
 					}
 				}
 				?>
       </tbody>
     </table>
     <!--Fin Module ref experience -->
+
 	</body>
 </html>

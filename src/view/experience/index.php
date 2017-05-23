@@ -30,14 +30,23 @@ for($index=0; $index < $indexCount; $index++) {
 	if (substr("$dirArray[$index]", 0, 1) != "."){ // don't list hidden files
 		print("<TR><TD><a href=\"./../../../../MNHN-Cloud/src/service/uploadManager.php?projet=$id_projet&exp=$id_exp&section=$section&fileName=$dirArray[$index]\">$dirArray[$index]</a></td>");
 		print("<td>");
-		print(filetype($dirArray[$index]));
+		print(filetype($pathExperience.'/'.$section.'/'.$dirArray[$index]));
 		print("</td>");
 		print("<td>");
-		print(filesize($dirArray[$index]));
+		print(filesize($pathExperience.'/'.$section.'/'.$dirArray[$index]));
 		print("</td>");
 		print("</TR>\n");
 	}
 }
 print("</TABLE>\n");
+
+	echo '<form method="post" action="../../service/downloadManager.php" enctype="multipart/form-data">';
+	echo '<input type="hidden" name="MAX_FILE_SIZE" value="2097152">';
+	echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
+	echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
+	echo '<input type="hidden" name="section" value="'.$section.'">';
+	echo '<input type="file" name="nom_du_fichier">';
+	echo '<input type="submit" value="Envoyer">';
+	echo '</form>';
 
 ?>
