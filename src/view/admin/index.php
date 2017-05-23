@@ -10,7 +10,6 @@
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
-		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
 		include_once (__DIR__.'/../../dao/refpath_dao.php');
     ?>
   <title>Page Admin</title>
@@ -57,14 +56,14 @@
     });
   </script>
 
-  <!-- edit pwd user-->
+  <!-- edit user-->
   <script>
     $(document).ready(function(){
       $('#edit-pwd-user').on('show.bs.modal', function (e) {
         var rowid = $(e.relatedTarget).data('id');
         $.ajax({
           type : 'post',
-          url : './update/edit_pwd_user.php', //Here you will fetch records
+          url : './update/edit_user.php', //Here you will fetch records
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
             $('#fetched-data-pwd-user').html(data);//Show fetched data from database
@@ -197,7 +196,7 @@
           echo '<td>'. $row['datecreation_utilisateur'] . '</td>';
           echo '<td>';
           echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Aviter/Desactiver utilisateur</a>';
-          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer mot de passe utilisateur</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer utilisateur</a>';
           echo '</td>';
           echo '</tr>';
         }
@@ -269,31 +268,6 @@
       </tbody>
     </table>
     <!--Fin Module ref experience -->
-
-    <!-- Module type de donnée -->
-    <h2>Types de donnée</h2>
-    <p>
-      <a href="./create/create_reftypedonnee.html" class="btn btn-success">Créer un type de donnée</a>
-    </p>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Libellé</th>
-          <th>Commentaire</th>
-        </tr>
-      </thead>
-      <tbody>
-	      <?php
-        foreach(RefTypeDonneeDao::selectAll() as $row){
-          echo '<tr>';
-          echo '<td>'. $row['libelle_reftypedonnee'] . '</td>';
-          echo '<td>'. $row['commentaire_reftypedonnee'] . '</td>';
-          echo '<tr>';
-        }
-	      ?>
-      </tbody>
-    </table>
-    <!--Fin Module type de donnée -->
 
     <!-- Module path src -->
     <h2>Chemin du dossier contenant les projets :</h2>

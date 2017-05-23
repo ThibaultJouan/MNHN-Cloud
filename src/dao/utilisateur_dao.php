@@ -66,6 +66,17 @@ class UtilisateurDao
         return self::$data;
     }
 
+    public static function getNomPrenomMailMdpById($id)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT prenom_utilisateur, nom_utilisateur, mail_utilisateur, motdepasse_utilisateur FROM utilisateur WHERE id_utilisateur = ? LIMIT 1 ";
+        $sth = $pdo->prepare($sql);
+        $sth->execute(array($id));
+        self::$data = $sth->fetch();
+        Database::disconnect();
+        return self::$data;
+    }
+
     public static function getIdByMail($mail)
     {
         $log = Log::getLog();
@@ -78,6 +89,22 @@ class UtilisateurDao
         return self::$data;
     }
 
+		public static function updateUser($id,$nom,$prenom,$mail,$pwd)
+		{
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE utilisateur SET motdepasse_utilisateur = ?, nom_utilisateur = ?, prenom_utilisateur = ?, mail_utilisateur = ? WHERE id_utilisateur = ?";
+        $sth = $pdo->prepare($sql);
+				if($sth->execute([$pwd,$nom,$prenom,$mail,$id]))
+					$log ->info("Mot de passe updated pour l'utilisateur: ".$id);
+				else{
+					 $log ->error("Echec Mot de passe updated pour l'utilisateur: ".$id);
+            Database::disconnect();
+            return 0;
+				}
+        Database::disconnect();
+        return 1;
+		}
 
 		public static function updatePwdUser($id,$pwd)
 		{
