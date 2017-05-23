@@ -56,14 +56,14 @@
     });
   </script>
 
-  <!-- edit pwd user-->
+  <!-- edit user-->
   <script>
     $(document).ready(function(){
       $('#edit-pwd-user').on('show.bs.modal', function (e) {
         var rowid = $(e.relatedTarget).data('id');
         $.ajax({
           type : 'post',
-          url : './update/edit_pwd_user.php', //Here you will fetch records
+          url : './update/edit_user.php', //Here you will fetch records
           data :  'rowid='+ rowid, //Pass $id
           success : function(data){
             $('#fetched-data-pwd-user').html(data);//Show fetched data from database
@@ -196,7 +196,7 @@
           echo '<td>'. $row['datecreation_utilisateur'] . '</td>';
           echo '<td>';
           echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Aviter/Desactiver utilisateur</a>';
-          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer mot de passe utilisateur</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer utilisateur</a>';
           echo '</td>';
           echo '</tr>';
         }
