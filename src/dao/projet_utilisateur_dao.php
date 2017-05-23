@@ -12,8 +12,6 @@ class Projet2UtilisateurDao
     public static function create($idProject, $idUser)
     {
         $log = Log::getLog();
-        $log->info('idProject : '.$idProject);
-        $log->info('idUser : '.$idUser);
         $pdo = Database::connect();
         $sql = "INSERT INTO projet2utilisateur (id_projet, id_utilisateur)
             VALUES ( ? , ?)";
@@ -34,6 +32,27 @@ class Projet2UtilisateurDao
             $log->info("Clean des relations projet: ".$idProject." vers les utilisateurs !");
         Database::disconnect();
         return 1;
+    }
+
+    public static function deleteByIdUser($idUser)
+    {
+        $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "DELETE FROM projet2utilisateur WHERE id_utilisateur = ? ";
+        $sth = $pdo->prepare($sql);
+        if($sth->execute(array($idUser)))
+            $log->info("Clean des relations utilisateur: ".$idUser." vers les projets !");
+        Database::disconnect();
+        return 1;
+		}
+
+    public static function selectAllByIdUser($idUser)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT DISTINCT id_utilisateur, id_projet, chef_projet FROM projet2utilisateur WHERE id_utilisateur = ".$idUser;
+				self::$data=$pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
     }
 
     public static function isJoin($idProject, $idUser)
