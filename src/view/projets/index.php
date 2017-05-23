@@ -10,7 +10,6 @@
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
-		include_once (__DIR__.'/../../dao/reftypedonnee_dao.php');
 		include_once (__DIR__.'/../../dao/projet_utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_refexperience_dao.php');
 
@@ -55,13 +54,15 @@
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
 						echo '<h3>Experiences : </h3>';
 						foreach(RefExperienceDao::selectAllActif() as $exp) {
-							if(1 == Projet2RefExperienceDao::isJoin(1, 1)){
+							if(1 == Projet2RefExperienceDao::isJoin($id_project, $exp['id_refexperience'])){
 								echo '<tr>';
 								echo '<td>'. $exp['libelle_refexperience'] . '</td>';
 								echo '<td>'. $exp['datecreation_refexperience'] . '</td>';
 								echo '<td>'. $exp['commentaire_refexperience'] . '</td>';
 								echo '<td>';
-								echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#" data-id="'.$exp['id_refexperience'].'">Faire quelque chose</a>';
+								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Force">Force</a>';
+								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Pression">Pression</a>';
+								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Video">Video</a>';
 								echo '</td>';
 								echo '</tr>';
 							}

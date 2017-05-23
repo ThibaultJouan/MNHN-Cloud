@@ -13,13 +13,13 @@ if($_POST['idProject']) {
         $idExperience = $row['id_refexperience'];
         if($_POST[$idExperience]=="yes"){
 						$row = RefExperienceDao::getLibelleActifById($idExperience);
-						$libelleExp = $row["libelle_experience"];
+						$libelleExp = $row["libelle_refexperience"];
 						$path = PATH_PROJET;
-						$path = $path.$libelleProject.$libelleExp;
+						$path = $path.$libelleProject."/".$libelleExp."/";
 						FileTools::makeDirectory($path);
-						FileTools::makeDirectory($path."/Video");
-						FileTools::makeDirectory($path."/Force");
-						FileTools::makeDirectory($path."/Pression");
+						FileTools::makeDirectory($path."Video");
+						FileTools::makeDirectory($path."Force");
+						FileTools::makeDirectory($path."Pression");
             Projet2RefExperienceDao::create($idProject,$idExperience);
         }
     }
