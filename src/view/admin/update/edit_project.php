@@ -68,7 +68,7 @@
 				<button type="submit" form="formProject" class="btn btn-success" href="../../service/admin/edit_project_bdd.php">Mise a jour</button>
 				<button type="submit" form="formProject2User" class="btn btn-success" href="./update/edit_project2user.php">Ajouter utilisateurs</button>
 				<button type="submit" form="formProject2Experience" class="btn btn-success" href="./update/edit_project2experience.php">Ajouter experiences</button>
-				<a href="index.php" class="btn btn-warning">Annule</a>
+				<a href="index.php" class="btn btn-warning">Annuler</a>
 			</div>
 		</div>
     </div>

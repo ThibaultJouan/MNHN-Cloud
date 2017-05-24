@@ -6,6 +6,9 @@
 			if(!isset($_SESSION['id_utilisateur'])){
 				header('Location: ' . '../view/connection');
 			}
+			
+			
+			
 		?>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,67 +40,51 @@
 		</header>
 		<hr class="primary">
 		<section class="row">
-			<div class="col-xs-12">
-
-			
-			<div class="btn-group">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Option <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a  data-toggle="modal" data-target="#edit-pwd-user" data-id="<?php echo $_SESSION['id_utilisateur']; ?>">Changer le mots de passe</a></li>
-				</ul>
-			</div>
-			
-			
-			
-			
+			<div class="col-xs-2 col-xs-offset-10">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Option <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a  data-toggle="modal" data-target="#edit-pwd-user" data-id="<?php echo $_SESSION['id_utilisateur']; ?>">Changer le mots de passe</a></li>
+						<li><a href="..\..\service\deconnexion.php">Déconnexion</a></li>
+					</ul>
+				</div>
 			</div>		
 		</section>
-		
-		
-
-		
-		
 		
 		<!-- jQuery -->
 		<script src="../../../js/jquery-3.1.1.min.js"></script>
 		<!-- bootstrap js -->
 		<script src="../../../js/bootstrap.min.js"></script>
-
 	
-	<!-- Edit pwd user-->
-    <div class="modal fade" id="edit-pwd-user" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Changer mot de passe utilisateur</h4>
-          </div>
-          <div class="modal-body">
-            
-			
-									<form class="form" id="formPwdUser" method="post" action="../../service/admin/edit_pwd_user_bdd.php">
-							<?php
-								echo	'<p class="text-muted">Nouveau mot de passe de '.$row['prenom_utilisateur'].' '.$row['nom_utilisateur'].'</p>';
-							?>
+		<!-- Modal -->
+		<div class="modal fade" id="edit-pwd-user" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="form" id="formPwdUser" method="post" action="../../service/profile.php">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Changer le mot de passe</h4>
+						</div>
+						<div class="modal-body">
 							<div class="row">
-								<div class="col-md-5">
-									<?php
-									echo '<input type="hidden" class="form-control " name="idUser" value = "'.$id.'" form="formPwdUser"/>';
-									?>
-									<input type="password" class="form-control " name="pwdUser" value = "MNHN-Could" form="formPwdUser"/>
+								<div class="col-xs-8 col-xs-offset-2">
+									<br>
+									<p class="text-muted">Nouveau mot de passe:</p>
+									<input type="hidden" class="form-control" name="idUser" value = "<?php echo $_SESSION['id_utilisateur']; ?>"/>
+									<input type="password" class="form-control" name="pwdUser"/>
+									<br>
 								</div>
-							</div>
-						</form>
-			
-			
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Fin edit pwd user-->
+							</div>		
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+							<button type="submit" class="btn btn-success">Mise a jour</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
     </body>
 </html>
