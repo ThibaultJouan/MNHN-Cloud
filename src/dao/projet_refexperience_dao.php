@@ -22,6 +22,15 @@ class Projet2RefExperienceDao
         return 1;
     }
 
+    public static function selectAllByIdProjet($idProjet)
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT DISTINCT id_refexperience, id_projet FROM projet2refexperience WHERE id_projet = ".$idProjet;
+				self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
+    }
+
     public static function deleteByIdProject($idProject)
     {
         $log = Log::getLog();
