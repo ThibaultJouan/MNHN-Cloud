@@ -27,7 +27,7 @@
             <?php
             $idUser = $_GET['idUser'];
             $user = UtilisateurDao::getNomPrenomActifById($idUser);
-            echo "<h1>Projets à lier a l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
+            echo "<h1>Droits de l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
             ?>
             </br>
             <h2>Projets:</h2>
@@ -39,8 +39,8 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Droits pour dépot</th>
+                        <th>Nom du projet</th>
+                        <th>Droits pour déposer des fichiers</th>
                         <th>Droits sur les expériences</th>
                     </tr>
                 </thead>
@@ -59,7 +59,7 @@
                         }
                         echo '</td>';
 												echo '<td>';
-												echo '<a class="btn btn-success" href="./edit_droit_user_experience.php?idUser='.$idUser.'&idProjet='.$row['id_projet'].'">Expériences</a>';
+												echo '<a class="btn btn-success" href="./edit_droit_user_experience.php?idUser='.$idUser.'&idProject='.$row['id_projet'].'">Expériences</a>';
 												echo '</td>';
                         echo '</tr>';
                     }
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class = 'col-md-2'>
                     <button type="submit" form="formDroitUser" class="btn btn-success"
-			            href="../../../service/admin/edit_droits_user_project_bdd.php">Mise a jour</button>
+			            href="../../../service/admin/edit_droits_user_project_bdd.php">Mise à jour</button>
                 </div>
                 <div class = 'col-md-2'>
                     <p>

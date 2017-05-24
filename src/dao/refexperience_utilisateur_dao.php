@@ -45,5 +45,14 @@ class RefExperience2UtilisateurDao
         Database::disconnect();
         return 1;
     }
+
+		public static function contains($idUser,$idExp){
+
+        $pdo = Database::connect();
+				$sql = "SELECT COUNT(*) AS count FROM `experience2utilisateur` WHERE id_refexperience = ".$idExp." AND id_utilisateur = ".$idUser." LIMIT 1";
+				self::$data = $pdo->query($sql);
+        Database::disconnect();
+				return 0;
+		}
 }
 ?>
