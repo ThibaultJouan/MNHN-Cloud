@@ -51,7 +51,9 @@ class RefExperience2UtilisateurDao
 				$sql = "SELECT * AS count FROM `experience2utilisateur` WHERE id_refexperience = ".$idExp." AND id_utilisateur = ".$idUser." LIMIT 1";
 				self::$data = $pdo->query($sql);
         Database::disconnect();
-				return self::$data;
+				if(self::$data->fetchColumn > 0)
+					return 1;
+				return 0;
 		}
 }
 ?>
