@@ -2,7 +2,7 @@
 include_once(__DIR__.'/../service/database.php');
 include_once(__DIR__.'/../log/log.php');
 class ProjetDao
-{   
+{
     private static $data  = null;
 
     public function __construct() {
@@ -16,6 +16,15 @@ class ProjetDao
         self::$data = $pdo->query($sql);
         Database::disconnect();
         return self::$data;
+		}
+
+		public static function selectIdLibelleByActif()
+    {
+        $pdo = Database::connect();
+        $sql = 'SELECT id_projet, libelle_projet FROM projet WHERE actif_projet = 1 ORDER BY id_projet DESC';
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
     }
 
     public static function createProject($libelle,$comment)
@@ -23,8 +32,8 @@ class ProjetDao
         $log = Log::getLog();
         $actif = 1;
         $pdo = Database::connect();
-        $sql = "INSERT INTO projet (libelle_projet, commentaire_projet, 
-            actif_projet) 
+        $sql = "INSERT INTO projet (libelle_projet, commentaire_projet,
+            actif_projet)
             VALUES ( ? , ? , ?)";
         $req = $pdo->prepare($sql);
         if($req->execute(array($libelle, $comment, $actif)))
@@ -36,6 +45,15 @@ class ProjetDao
         }
         Database::disconnect();
         return 1;
+    }
+
+    public static function getIdByActif()
+    {
+        $pdo = Database::connect();
+        $sql = "SELECT id_projet FROM projet WHERE actif_projet = 1";
+        self::$data = $pdo->query($sql);
+        Database::disconnect();
+        return self::$data;
     }
 
     public static function getLibelleCommentaireActifById($id)
