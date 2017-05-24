@@ -47,9 +47,8 @@ class RefExperience2UtilisateurDao
     }
 
 		public static function contains($idUser,$idExp){
-
         $pdo = Database::connect();
-				$sql = "SELECT COUNT(*) AS count FROM `experience2utilisateur` WHERE id_refexperience = ".$idExp." AND id_utilisateur = ".$idUser." LIMIT 1";
+				$sql = "SELECT * AS count FROM `experience2utilisateur` WHERE id_refexperience = ".$idExp." AND id_utilisateur = ".$idUser." LIMIT 1";
 				self::$data = $pdo->query($sql);
         Database::disconnect();
 				return self::$data;

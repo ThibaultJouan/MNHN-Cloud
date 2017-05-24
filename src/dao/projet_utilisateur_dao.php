@@ -55,6 +55,42 @@ class Projet2UtilisateurDao
         return self::$data;
     }
 
+		public static function resetChefProjetByIdUser($idUser){
+			  $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE projet2utilisateur SET chef_projet = 0 WHERE id_utilisateur = ?";
+				$sth = $pdo->prepare($sql);
+				if($sth->execute([$idUser]))
+					$log ->info("Clean des droits projet pour l'utilisateur: ".$idUser);
+				else
+					$log ->error("Echec du clean des droits projet pour l'utilisateur: ".$idUser);
+				Database::disconnect();
+				return 1;
+		}
+
+		public static function updateChefProjet($idProject,$idUser){
+			  $log = Log::getLog();
+        $pdo = Database::connect();
+        $sql = "UPDATE projet2utilisateur SET chef_projet = 1 WHERE id_utilisateur = ? AND id_projet = ?";
+				$sth = $pdo->prepare($sql);
+				if($sth->execute([$idUser,$idProject]))
+					$log ->info("Affectation des droits projet:".$idProject."   pour l'utilisateur: ".$idUser);
+				else
+					$log ->error("Echec affectation des droits projet:".$idProject."   pour l'utilisateur: ".$idUser);
+				Database::disconnect();
+				return 1;
+		}
+
+		public static function contains($idProject,$idUser){
+			$pdo = Database::connect();
+			$sql = "SELECT COUNT(*) AS count FROM projet2utilisateur WHERE id_projet = ".$idProject." AND id_utilisateur = ".$idUser." LIMIT 1";
+			self::$data = $pdo->query($sql);
+			Database::disconnect();
+			if(self::$data->fetchColumn() > 0 )
+				return 1;
+			return 0;
+		}
+
     public static function isJoin($idProject, $idUser)
     {
         $pdo = Database::connect();
