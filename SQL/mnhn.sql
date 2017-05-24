@@ -26,14 +26,15 @@ SET time_zone = "+00:00";
 -- Structure de la table `donnee`
 --
 
-CREATE TABLE IF NOT EXISTS `donnee` (
+CREATE TABLE `donnee` (
   `id_donnee` int(11) NOT NULL,
   `nomfichier_donnee` varchar(25) NOT NULL,
   `commentaire_donnee` text,
   `actif_donnee` tinyint(1) NOT NULL,
   `datecreation_donnee` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type_donnee` varchar(50) DEFAULT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `id_projet` int(11) NOT NULL
+  `id_refexperience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `donnee` (
 -- Structure de la table `experience2utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `experience2utilisateur` (
+CREATE TABLE `experience2utilisateur` (
   `id_utilisateur` int(11) NOT NULL,
   `id_refexperience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -53,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `experience2utilisateur` (
 -- Structure de la table `projet`
 --
 
-CREATE TABLE IF NOT EXISTS `projet` (
+CREATE TABLE `projet` (
   `id_projet` int(11) NOT NULL,
   `libelle_projet` varchar(25) NOT NULL,
   `commentaire_projet` text,
@@ -67,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `projet` (
 -- Structure de la table `projet2refexperience`
 --
 
-CREATE TABLE IF NOT EXISTS `projet2refexperience` (
+CREATE TABLE `projet2refexperience` (
   `id_projet` int(11) NOT NULL,
   `id_refexperience` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -78,8 +79,8 @@ CREATE TABLE IF NOT EXISTS `projet2refexperience` (
 -- Structure de la table `projet2utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `projet2utilisateur` (
-  `chef_projet` tinyint(1) DEFAULT NULL,
+CREATE TABLE `projet2utilisateur` (
+  `chef_projet` tinyint(1) DEFAULT '0',
   `id_utilisateur` int(11) NOT NULL,
   `id_projet` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `projet2utilisateur` (
 -- Structure de la table `refexperience`
 --
 
-CREATE TABLE IF NOT EXISTS `refexperience` (
+CREATE TABLE `refexperience` (
   `id_refexperience` int(11) NOT NULL,
   `libelle_refexperience` varchar(25) NOT NULL,
   `commentaire_refexperience` text,
@@ -104,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `refexperience` (
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateur` (
+CREATE TABLE `utilisateur` (
   `id_utilisateur` int(11) NOT NULL,
   `nom_utilisateur` varchar(35) NOT NULL,
   `prenom_utilisateur` varchar(35) NOT NULL,
@@ -125,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 ALTER TABLE `donnee`
   ADD PRIMARY KEY (`id_donnee`),
   ADD KEY `FK_DONNEE_id_utilisateur` (`id_utilisateur`),
-  ADD KEY `FK_DONNEE_id_projet` (`id_projet`);
+  ADD KEY `FK_DONNEE_id_refexperience` (`id_refexperience`);
 
 --
 -- Index pour la table `experience2utilisateur`
@@ -191,7 +192,7 @@ ALTER TABLE `refexperience`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Contraintes pour les tables exportées
 --
@@ -200,7 +201,7 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `donnee`
 --
 ALTER TABLE `donnee`
-  ADD CONSTRAINT `FK_DONNEE_id_projet` FOREIGN KEY (`id_projet`) REFERENCES `projet` (`id_projet`),
+  ADD CONSTRAINT `FK_DONNEE_id_refexperience` FOREIGN KEY (`id_refexperience`) REFERENCES `refexperience` (`id_refexperience`),
   ADD CONSTRAINT `FK_DONNEE_id_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
 
 --
