@@ -1,7 +1,7 @@
 <?php
 
-	define('PATH_PROJET', '/var/www/html/MNHN-Cloud/test/');
-	define('PATH_WEBSITE', '/var/www/html/MNHN-Cloud/');
+	define('PATH_PROJET', '/volume1/Projets/');
+	define('PATH_WEBSITE', '/volume1/web/MNHN-Cloud/');
 
 
 

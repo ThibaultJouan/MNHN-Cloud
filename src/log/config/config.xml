@@ -3,7 +3,7 @@
         <layout class="LoggerLayoutPattern">
             <param name="conversionPattern" value="%-5level : %d{Y-m-d H:i:s} %F -> %msg%n" />
         </layout>
-				<param name="file" value="/var/www/html/MNHN-Cloud/src/app_log.log" />
+				<param name="file" value="/volume1/web/MNHN-Cloud/src/app_log.log" />
         <param name="append" value="true" />
     </appender>
     <root>
