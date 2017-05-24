@@ -66,7 +66,8 @@
 							<ul class="dropdown-menu">
 								<?php
 								foreach(ProjetDao::selectAll() as $row){
-									if(Projet2UtilisateurDao::isJoin($row['id_projet'], $_SESSION['id_utilisateur']) == 1){
+									if(Projet2UtilisateurDao::isJoin($row['id_projet'], $_SESSION['id_utilisateur']) == 1
+										|| $_SESSION['admin'] == 1){
 										?>
 										<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
 										<?php

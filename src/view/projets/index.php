@@ -16,7 +16,7 @@
 		//ajout de ALO
 		$id_project = $_GET["id"];
 
-		if(Projet2UtilisateurDao::isJoin($id_project, $_SESSION['id_utilisateur']) !=1){
+		if(Projet2UtilisateurDao::isJoin($id_project, $_SESSION['id_utilisateur']) !=1 && $_SESSION['admin'] != 1){
 			header('Location: ' . '../../index.php');
 		}
 		?>
@@ -45,6 +45,7 @@
           <th>Commentaire</th>
           <th>Actif</th>
           <th>Date creation</th>
+          <th>Acces aux donnees</th>
         </tr>
       </thead>
       <tbody>
@@ -57,12 +58,13 @@
 							if(1 == Projet2RefExperienceDao::isJoin($id_project, $exp['id_refexperience'])){
 								echo '<tr>';
 								echo '<td>'. $exp['libelle_refexperience'] . '</td>';
-								echo '<td>'. $exp['datecreation_refexperience'] . '</td>';
 								echo '<td>'. $exp['commentaire_refexperience'] . '</td>';
+								echo '<td>'. $exp['actif_refexperience'] . '</td>';
+								echo '<td>'. $exp['datecreation_refexperience'] . '</td>';
 								echo '<td>';
-								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Force">Force</a>';
-								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Pression">Pression</a>';
-								echo '<a class="btn btn-info btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Video">Video</a>';
+								echo '<a class="btn btn-success btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Force">Force</a>';
+								echo '<a class="btn btn-success btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Pression">Pression</a>';
+								echo '<a class="btn btn-success btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Video">Video</a>';
 								echo '</td>';
 								echo '</tr>';
 							}

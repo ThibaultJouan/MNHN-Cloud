@@ -57,5 +57,14 @@ class FileTools
 			else
 				$log->error("Le dossier ".$input." n'a pas pu etre supprime!");
 		}
+
+		//Prend un int en input, le renvoie dans un format lisible facilement
+		public static function humanReadableSize($input){
+			$unites = "oKMGTP";
+			$decimals = 2;
+			$factor = floor((strlen($input) - 1) / 3);
+			return sprintf("%.{$decimals}f", $input / pow(1024, $factor)) . @$unites[$factor];
+
+		}
 }
 ?>
