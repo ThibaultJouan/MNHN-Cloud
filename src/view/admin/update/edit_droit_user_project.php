@@ -27,7 +27,7 @@
             <?php
             $idUser = $_GET['idUser'];
             $user = UtilisateurDao::getNomPrenomActifById($idUser);
-            echo "<h1>Droits de l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
+            echo "<h1>Droits de l'utilisateur: ".$user['prenom_utilisateur'].' '.$user['nom_utilisateur'].'</h1>';
             ?>
             </br>
             <h2>Projets:</h2>

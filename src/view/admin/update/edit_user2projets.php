@@ -25,7 +25,7 @@
             <?php
             $id = $_POST['idUser'];
             $user = UtilisateurDao::getNomPrenomMailMdpById($id);
-            echo "<h1>Projets à lier a l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
+            echo "<h1>Projets à lier a l'utilisateur: ".$user['prenom_utilisateur'].' '.$user['nom_utilisateur'].'</h1>';
             ?>
             </br>
             <h2>Projets:</h2>
