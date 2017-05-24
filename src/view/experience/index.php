@@ -11,6 +11,7 @@
 		include_once(__DIR__.'/../../service/fileTools.php');
 		include_once(__DIR__.'/../../dao/projet_dao.php');
 		include_once(__DIR__.'/../../dao/refexperience_dao.php');
+		include_once(__DIR__.'/../../dao/refexperience_dao.php');
 
 		$path = PATH_PROJET;
 
@@ -19,9 +20,11 @@
 		$section = $_GET['section'];
 
 		$row = ProjetDao::getLibelleById($id_projet);
-		$pathProjet = $path.$row['libelle_projet'];
+		$libelleProjet = $row['libelle_projet'];
+		$pathProjet = $path.$libelleProjet;
 		$row = RefExperienceDao::getLibelleActifById($id_exp);
-		$pathExperience = $pathProjet.'/'.$row['libelle_refexperience'];
+		$libelleExperience = $row['libelle_refexperience'];
+		$pathExperience = $pathProjet.'/'.$libelleExperience;
 		$directory = openDir($pathExperience.'/'.$section);
 
 		while($entryName = readdir($directory)) {
@@ -31,7 +34,7 @@
 		closedir($directory);
 
 
-		echo '<title>'.$section.'</title>';
+		echo '<title>'.$libelleExperience.'</title>';
 
 		?>
 		<link rel="icon" type="image/png" href="../../../img/logo/logo_MNHN.png" />
@@ -50,6 +53,8 @@
 	</head>
 
 	<body class="container">
+
+	<h1><?php echo $section?></h1>
     <table class="table table-striped table-bordered">
       <thead>
         <tr>

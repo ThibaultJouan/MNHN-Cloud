@@ -21,7 +21,9 @@
 		}
 		?>
 
-		<title>Vue projet</title>
+			<title><?php $row = ProjetDao::getLibelleById($id_project);
+			echo $row['libelle_projet'];
+			?></title>
 
 		<link rel="icon" type="image/png" href="../../../img/logo/logo_MNHN.png" />
 
@@ -50,8 +52,8 @@
       </thead>
       <tbody>
 				<?php
-				foreach(ProjetDao::selectAll() as $row) {
-					if($row['id_projet'] == $id_project) {
+				$row = ProjetDao::getLibelleById($id_project);
+					//if($row['id_projet'] == $id_project) {
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
 						echo '<h3>Experiences : </h3>';
 						foreach(RefExperienceDao::selectAllActif() as $exp) {
@@ -69,9 +71,9 @@
 								echo '</tr>';
 							}
 						}
-					break;
-					}
-				}
+					//break;
+					//}
+
 				?>
       </tbody>
     </table>
