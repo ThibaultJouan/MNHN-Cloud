@@ -27,7 +27,7 @@
             <?php
             $idUser = $_GET['idUser'];
             $user = UtilisateurDao::getNomPrenomActifById($idUser);
-            echo "<h1>Droits de l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
+            echo "<h1>Droits de l'utilisateur: ".$user['prenom_utilisateur'].' '.$user['nom_utilisateur'].'</h1>';
             ?>
             </br>
             <h2>Projets:</h2>
@@ -56,7 +56,7 @@
                         }
                         else{
                             echo '<input type="checkbox" name="'.$row['id_projet'].'" value="yes" form="formDroitUser" checked>Autorisé';
-                        }
+												}
                         echo '</td>';
 												echo '<td>';
 												echo '<a class="btn btn-success" href="./edit_droit_user_experience.php?idUser='.$idUser.'&idProject='.$row['id_projet'].'">Expériences</a>';

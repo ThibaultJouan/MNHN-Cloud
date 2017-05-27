@@ -29,7 +29,7 @@
 						$idProject = $_GET['idProject'];
             $user = UtilisateurDao::getNomPrenomActifById($idUser);
 						$project = ProjetDao::getLibelleById($idProject);
-						echo "<h1>Droits de l'utilisateur: ".$user['nom_utilisateur'].' '.$user['prenom_utilisateur'].'</h1>';
+						echo "<h1>Droits de l'utilisateur: ".$user['prenom_utilisateur'].' '.$user['nom_utilisateur'].'</h1>';
 						echo '<h1>Sur le projet: '.$project['libelle_projet'].'</h1>';
             ?>
             </br>
