@@ -3,6 +3,7 @@ include_once(__DIR__.'/../log/log.php');
 include_once(__DIR__.'/../dao/projet_dao.php');
 include_once(__DIR__.'/../dao/refexperience_dao.php');
 include_once(__DIR__.'/../service/configPath.php');
+
 $fileName = $_GET['fileName'];
 $idProjet = $_GET['projet'];
 $idExp = $_GET['exp'];
@@ -44,6 +45,7 @@ if(is_file($file)) {
 	header('Content-Length: '.filesize($file));	// provide file size
 	header('Connection: close');
 	readfile($file);		// push it out
+	$log->info("fichier ".$filemane." download correctement");
 	exit();
 
 }

@@ -11,7 +11,7 @@
 		include_once(__DIR__.'/../../service/fileTools.php');
 		include_once(__DIR__.'/../../dao/projet_dao.php');
 		include_once(__DIR__.'/../../dao/refexperience_dao.php');
-		include_once(__DIR__.'/../../dao/refexperience_dao.php');
+		include_once(__DIR__.'/../../dao/refexperience_utilisateur_dao.php');
 
 		$path = PATH_PROJET;
 
@@ -82,6 +82,9 @@
 		}
 		print("</TABLE>\n");
 
+		if(RefExperience2UtilisateurDao::contains($_SESSION['id_utilisateur'], $id_exp)
+			|| $_SESSION['admin'] == 1){
+			//$contain = RefExperience2UtilisateurDao::contains($idUser,$row['id_refexperience']);
 			echo '<form method="post" action="../../service/downloadManager.php" enctype="multipart/form-data">';
 			echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
 			echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
@@ -89,6 +92,7 @@
 			echo '<input type="file" name="nom_du_fichier">';
 			echo '<input type="submit" value="Envoyer">';
 			echo '</form>';
+		}
 
 		?>
       </tbody>
