@@ -91,17 +91,15 @@ class Projet2UtilisateurDao
 			return 0;
 		}
 
-    public static function isJoin($idProject, $idUser)
+    public static function isChefProjet($idProject, $idUser)
     {
         $pdo = Database::connect();
-        $sql = "SELECT id_projet FROM projet2utilisateur WHERE id_projet = ? AND id_utilisateur = ? LIMIT 1 ";
+        $sql = "SELECT chef_projet FROM projet2utilisateur WHERE id_projet = ? AND id_utilisateur = ? LIMIT 1 ";
         $sth = $pdo->prepare($sql);
         $sth->execute(array($idProject,$idUser));
         self::$data = $sth->fetch();
         Database::disconnect();
-        if(self::$data == null)
-            return 0;
-        return 1;
+        return self::$data['chef_projet'];
     }
 
 }

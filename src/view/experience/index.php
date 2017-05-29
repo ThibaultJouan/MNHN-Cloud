@@ -10,14 +10,16 @@
 		include_once(__DIR__.'/../../service/configPath.php');
 		include_once(__DIR__.'/../../service/fileTools.php');
 		include_once(__DIR__.'/../../dao/projet_dao.php');
+		include_once(__DIR__.'/../../dao/projet_utilisateur_dao.php');
 		include_once(__DIR__.'/../../dao/refexperience_dao.php');
-		include_once(__DIR__.'/../../dao/refexperience_dao.php');
+		include_once(__DIR__.'/../../dao/refexperience_utilisateur_dao.php');
 
 		$path = PATH_PROJET;
 
 		$id_projet = $_GET['projet'];
 		$id_exp = $_GET['exp'];
 		$section = $_GET['section'];
+		$id_user = $_SESSION['id_utilisateur'];
 
 		$row = ProjetDao::getLibelleById($id_projet);
 		$libelleProjet = $row['libelle_projet'];
@@ -26,6 +28,7 @@
 		$libelleExperience = $row['libelle_refexperience'];
 		$pathExperience = $pathProjet.'/'.$libelleExperience;
 		$directory = openDir($pathExperience.'/'.$section);
+		$pathDirectory = $pathExperience.'/'.$section;
 
 		while($entryName = readdir($directory)) {
 			$dirArray[] = $entryName;
@@ -59,8 +62,8 @@
       <thead>
         <tr>
           <th>Libellé</th>
-          <th>Commentaire</th>
-          <th>Actif</th>
+          <th>Date de création</th>
+          <th>Taille</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +75,8 @@
 			if (substr("$dirArray[$index]", 0, 1) != "."){ // don't list hidden files
 				print("<TR><TD><a href=\"./../../../../MNHN-Cloud/src/service/uploadManager.php?projet=$id_projet&exp=$id_exp&section=$section&fileName=$dirArray[$index]\">$dirArray[$index]</a></td>");
 				print("<td>");
-				print(filetype($pathExperience.'/'.$section.'/'.$dirArray[$index]));
+				//print(filetype($pathExperience.'/'.$section.'/'.$dirArray[$index]));
+				print(date('d/m/Y',filemtime($pathExperience.'/'.$section.'/'.$dirArray[$index])));
 				print("</td>");
 				print("<td>");
 				print(FileTools::humanReadableSize(filesize($pathExperience.'/'.$section.'/'.$dirArray[$index])));
@@ -82,13 +86,19 @@
 		}
 		print("</TABLE>\n");
 
+		if(RefExperience2UtilisateurDao::contains($id_user, $id_exp)
+			|| $_SESSION['admin'] == 1
+			|| Projet2UtilisateurDao::isChefProjet($id_projet, $id_user) == 1){
+			echo '<h3>Ajouter un fichier</h3>';
 			echo '<form method="post" action="../../service/downloadManager.php" enctype="multipart/form-data">';
 			echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
 			echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
 			echo '<input type="hidden" name="section" value="'.$section.'">';
+			echo 'Commentaire : <input type="text" name="commentaire" >';
 			echo '<input type="file" name="nom_du_fichier">';
 			echo '<input type="submit" value="Envoyer">';
 			echo '</form>';
+		}
 
 		?>
       </tbody>

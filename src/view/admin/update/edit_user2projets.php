@@ -47,7 +47,7 @@
                         echo '<tr>';
                         echo '<td>'. $row['libelle_projet'] . '</td>';
                         echo '<td>';
-                        if(Projet2UtilisateurDao::isJoin($row['id_projet'], $id) == 0){
+                        if(Projet2UtilisateurDao::contains($row['id_projet'], $id) == 0){
                             echo '<label><input type="checkbox" name="'.$row['id_projet'].'" value="yes" form="formUtilisateur2Projet">Lié</label>';
                         }
                         else{
