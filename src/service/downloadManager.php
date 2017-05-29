@@ -2,13 +2,18 @@
 include_once(__DIR__.'/../log/log.php');
 include_once(__DIR__."/configPath.php");
 include_once(__DIR__."/../dao/projet_dao.php");
+include_once(__DIR__."/../dao/donnee_dao.php");
 include_once(__DIR__."/../dao/refexperience_dao.php");
 
 $log = Log::getLog();
 
+session_start();
+
+$idUser = $_SESSION['id_utilisateur'];
 $idProjet = $_POST['id_projet'];
 $idExp = $_POST['id_exp'];
 $section = $_POST['section'];
+$commentaire = $_POST['commentaire'];
 
 $path = PATH_PROJET;
 $row = ProjetDao::getLibelleById($idProjet);
@@ -43,6 +48,7 @@ else {
 
 	if(isset($_FILES['nom_du_fichier'])){
 		echo 'succes';
+		DonneeDao::createDonnee($_FILES['nom_du_fichier']['name'], $commentaire, 1, date('Y-m-d H::m::s'), $section, $idUser, $idExp);
 		move_uploaded_file($_FILES['nom_du_fichier']['tmp_name'], $directory.$_FILES['nom_du_fichier']['name']);
 		$log->info("le fichier ".$_FILES['nom_du_fichier']['name']." a ete upload sur le serveur");
 	}

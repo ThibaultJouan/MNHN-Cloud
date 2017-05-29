@@ -16,7 +16,7 @@
 		//ajout de ALO
 		$id_project = $_GET["id"];
 
-		if(Projet2UtilisateurDao::isJoin($id_project, $_SESSION['id_utilisateur']) !=1 && $_SESSION['admin'] != 1){
+		if(Projet2UtilisateurDao::contains($id_project, $_SESSION['id_utilisateur']) !=1 && $_SESSION['admin'] != 1){
 			header('Location: ' . '../../index.php');
 		}
 		?>
