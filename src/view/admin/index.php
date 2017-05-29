@@ -56,6 +56,22 @@
     });
   </script>
 
+  <script>
+    $(document).ready(function(){
+      $('#edit-pwd-user').on('show.bs.modal', function (e) {
+        var rowid = $(e.relatedTarget).data('id');
+        $.ajax({
+          type : 'post',
+          url : './update/edit_user.php', //Here you will fetch records
+          data :  'rowid='+ rowid, //Pass $id
+          success : function(data){
+            $('#fetched-data-pwd-user').html(data);//Show fetched data from database
+          }
+        });
+      });
+    });
+  </script>
+
 </head>
 <body>
   <div class="container">
@@ -102,6 +118,19 @@
 
     <!-- Module utilisateur -->
     <h2>Utilisateurs</h2>
+		<div>
+			<a class="btn btn-primary btn-sm" disabled="disabled"  href="./">Utilisateur</a>
+			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
+			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
+		</div>
+    </br>
+    </br>
+    <!-- Module reccuperation log -->
+    <form action="../../service/admin/download_log.php" method="post">
+      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
+    </form>
+    </br>
+    </br>
     <p>
       <a href="./create/create_user.html" class="btn btn-success">Créer un utilisateur</a>
     </p>
@@ -139,18 +168,6 @@
       </tbody>
     </table>
     <!-- Fin Module utilisateur -->
-    </br>
-    </br>
-		<div>
-			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
-			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
-		</div>
-    </br>
-    </br>
-    <!-- Module reccuperation log -->
-    <form action="../../service/admin/download_log.php" method="post">
-      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
-    </form>
   </div>
 </body>
 </html>

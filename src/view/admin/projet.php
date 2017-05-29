@@ -63,6 +63,19 @@
 
     <!-- Module projet -->
     <h2>Projets</h2>
+		<div>
+			<a class="btn btn-primary btn-sm" href="./">Utilisateur</a>
+			<a class="btn btn-primary btn-sm" disabled="disabled" href="./projet.php">Projets</a>
+			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
+		</div>
+    </br>
+    </br>
+    <!-- Module reccuperation log -->
+    <form action="../../service/admin/download_log.php" method="post">
+      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
+    </form>
+    </br>
+    </br>
     <p>
       <a href="./create/create_project.html" class="btn btn-success">Créer un projet</a>
     </p>
@@ -96,13 +109,6 @@
 	      ?>
       </tbody>
     </table>
-    <!--Fin Module projet -->
-		</br>
-		</br>
-		<div>
-			<a class="btn btn-primary btn-sm" href="./">Utilisateurs</a>
-			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
-		</div>
   </div>
 </body>
 </html>

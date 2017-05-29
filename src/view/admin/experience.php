@@ -63,6 +63,19 @@
 
     <!-- Module ref experience -->
     <h2>Experiences</h2>
+		<div>
+			<a class="btn btn-primary btn-sm" href="./">Utilisateur</a>
+			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
+			<a class="btn btn-primary btn-sm" disabled="disabled" href="./experience.php">Experiences</a>
+		</div>
+    </br>
+    </br>
+    <!-- Module reccuperation log -->
+    <form action="../../service/admin/download_log.php" method="post">
+      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
+    </form>
+    </br>
+    </br>
     <p>
       <a href="./create/create_experience.html" class="btn btn-success">Créer une experience</a>
     </p>
@@ -97,6 +110,7 @@
 		<div>
 			<a class="btn btn-primary btn-sm" href="./">Utilisateurs</a>
 			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
+			<a class="btn btn-primary btn-sm" disabled="disabled" href="./experience.php">Experience</a>
 		</div>
   </div>
 </body>
