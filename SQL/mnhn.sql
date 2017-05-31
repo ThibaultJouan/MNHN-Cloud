@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `donnee` (
   `id_donnee` int(11) NOT NULL,
-  `nomfichier_donnee` varchar(25) NOT NULL,
+  `nomfichier_donnee` varchar(255) NOT NULL,
   `commentaire_donnee` text,
   `actif_donnee` tinyint(1) NOT NULL,
   `datecreation_donnee` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
