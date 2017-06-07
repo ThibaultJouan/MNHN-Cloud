@@ -57,6 +57,21 @@
 
 	<body class="container">
 
+		<header class="row">
+			<div class="col-xs-12">
+				<center>
+					<h1>Experiences</h1>
+				</center>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<hr class="primary">
+				</div>
+			</div>
+
+		<?php include (__DIR__.'/../../navbar.html')?>
+		</header>
+
 	<h1><?php echo $section?></h1>
     <table class="table table-striped table-bordered">
       <thead>

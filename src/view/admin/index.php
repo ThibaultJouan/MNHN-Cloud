@@ -74,6 +74,20 @@
 </head>
 <body>
   <div class="container">
+		<header class="row">
+			<div class="col-xs-12">
+				<center>
+					<h1>Page Admin Projet</h1>
+				</center>
+			</div>
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<hr class="primary">
+				</div>
+			</div>
+
+		<?php include (__DIR__.'/../../navbar.html')?>
+		</header>
   <!-- Modals -->
 
   <!-- Active/desactive utilisateur -->
@@ -124,12 +138,6 @@
 		</div>
     </br>
     </br>
-    <!-- Module reccuperation log -->
-    <form action="../../service/admin/download_log.php" method="post">
-      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
-    </form>
-    </br>
-    </br>
     <p>
       <a href="./create/create_user.html" class="btn btn-success">Créer un utilisateur</a>
     </p>
@@ -167,6 +175,12 @@
       </tbody>
     </table>
     <!-- Fin Module utilisateur -->
+    </br>
+    </br>
+    <!-- Module reccuperation log -->
+    <form action="../../service/admin/download_log.php" method="post">
+      <input class="btn btn-warning" type="submit" name="submit" value="Download Log" />
+    </form>
   </div>
 </body>
 </html>
