@@ -47,7 +47,8 @@ else {
  // ce qui signifie qu'il n'y a eu aucune erreur
 
 	if(isset($_FILES['nom_du_fichier'])){
-		echo 'succes';
+		echo 'succes<br/>';
+
 		DonneeDao::createDonnee($_FILES['nom_du_fichier']['name'], $commentaire, 1, date('Y-m-d H::m::s'), $section, $idUser, $idExp);
 		move_uploaded_file($_FILES['nom_du_fichier']['tmp_name'], $directory.$_FILES['nom_du_fichier']['name']);
 		$log->info("le fichier ".$_FILES['nom_du_fichier']['name']." a ete upload sur le serveur");
