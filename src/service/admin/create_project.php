@@ -9,7 +9,6 @@ if($_POST['libelleProject']) {
         $commentaire = $_POST['commentProject'];
     $success = ProjetDao::createProject($libelle,$commentaire);
 		if($success){
-				$src = RefPathDao::getSrcPath();
 				$path = PATH_PROJET;
 				$path = $path."".$libelle;
 				FileTools::makeDirectory($path);
