@@ -11,7 +11,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href=<?php echo PATH_WEBSITE.'src/'; ?>>MNHN Cloud</a>
+						<a class="navbar-brand" href=<?php echo PATH_WEB.'src/'; ?>>MNHN Cloud</a>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
@@ -38,7 +38,7 @@
 							}?>
 							<!-- à mofifier en foncion de la connection -->
 							<li><a href="view\profile"><?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?></a></li>
-							<li><a href="service\deconnexion.php">Déconnexion</a></li>
+							<li><a href=<?php echo PATH_WEB."src\service\deconnexion.php" ?>>Déconnexion</a></li>
 						</ul>
 					</div>
 				</div>
