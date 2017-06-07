@@ -15,8 +15,9 @@
 
 		//ajout de ALO
 		$id_project = $_GET["id"];
+		$id_utilisateur = $_SESSION['id_utilisateur'];
 
-		if(Projet2UtilisateurDao::contains($id_project, $_SESSION['id_utilisateur']) !=1 && $_SESSION['admin'] != 1){
+		if(Projet2UtilisateurDao::contains($id_project, $id_utilisateur)  !=1 && $_SESSION['admin'] != 1){
 			header('Location: ' . '../../index.php');
 		}
 		?>
@@ -85,12 +86,27 @@
 								echo '</tr>';
 							}
 						}
+
+
 					//break;
 					//}
 
 				?>
       </tbody>
     </table>
+
+<?php
+						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
+							|| $_SESSION['admin'] == 1){
+							echo "<h3>ajouter une experience</h3>";
+							echo '<form method="post" action="../../service/cdpAjoutExperience.php">';
+							echo '<input type="hidden" name="idProject" value="'.$id_project.'"/>';
+							echo '<input type="text" name="libelleExp" />';
+							echo '<input type="text" name="commentaireExp" />';
+							echo '<button type="submit" class="btn btn-success btn-sm" >Créer experience</button>';
+							echo '</form>';
+						}
+?>
     <!--Fin Module ref experience -->
 
 	</body>
