@@ -23,7 +23,7 @@
 									if(Projet2UtilisateurDao::contains($row['id_projet'], $_SESSION['id_utilisateur']) == 1
 										|| $_SESSION['admin'] == 1){
 										?>
-										<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
+										<li><a href=<?php echo PATH_WEB."src/view/projets/index.php?id=".$row['id_projet'].">".$row['libelle_projet'];?></a><li>
 										<?php
 									}
 								}?>
@@ -37,8 +37,8 @@
 								echo '<li><a href="view\admin">Admin</a></li>';
 							}?>
 							<!-- à mofifier en foncion de la connection -->
-							<li><a href="view\profile"><?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?></a></li>
-							<li><a href=<?php echo PATH_WEB."src\service\deconnexion.php" ?>>Déconnexion</a></li>
+							<li><a href=<?php echo PATH_WEB."src/view/profile"?>><?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?></a></li>
+							<li><a href=<?php echo PATH_WEB."src/service/deconnexion.php" ?>>Déconnexion</a></li>
 						</ul>
 					</div>
 				</div>
