@@ -28,6 +28,7 @@
 
 		<?php include_once (__DIR__.'/dao/projet_dao.php'); ?>
 		<?php include_once (__DIR__.'/dao/projet_utilisateur_dao.php'); ?>
+		<?php include_once (__DIR__.'/dao/donnee_dao.php'); ?>
 
 	</head>
 	<body class="container">
@@ -47,58 +48,84 @@
 			</div>
 
 
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="">MNHN Cloud</a>
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Liste projet <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<?php
-								foreach(ProjetDao::selectAll() as $row){
-									if(Projet2UtilisateurDao::contains($row['id_projet'], $_SESSION['id_utilisateur']) == 1
-										|| $_SESSION['admin'] == 1){
-										?>
-										<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
-										<?php
-									}
-								}?>
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="">MNHN Cloud</a>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Liste projet <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<?php
+									foreach(ProjetDao::selectAll() as $row){
+										if(Projet2UtilisateurDao::contains($row['id_projet'], $_SESSION['id_utilisateur']) == 1
+											|| $_SESSION['admin'] == 1){
+											?>
+											<li><a href="view/projets/index.php?id=<?php echo $row['id_projet']?> "> <?php echo $row['libelle_projet']; ?> </a><li>
+											<?php
+										}
+									}?>
 
+								</ul>
+								</li>
 							</ul>
-							</li>
-						</ul>
-						<!-- à afficher en fonction du type de profile -->
-						<ul class="nav navbar-nav navbar-right">
-							<?php if($_SESSION ['admin'] == 1){
-								echo '<li><a href="view\admin">Admin</a></li>';
-							}?>
-							<!-- à mofifier en foncion de la connection -->
-							<li><a href="view\profile"><?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?></a></li>
-							<li><a href="service\deconnexion.php">Déconnexion</a></li>
-						</ul>
+							<!-- à afficher en fonction du type de profile -->
+							<ul class="nav navbar-nav navbar-right">
+								<?php if($_SESSION ['admin'] == 1){
+									echo '<li><a href="view\admin">Admin</a></li>';
+								}?>
+								<!-- à mofifier en foncion de la connection -->
+								<li><a href="view\profile"><?php echo $_SESSION['prenom'].' '.$_SESSION['nom']; ?></a></li>
+								<li><a href="service\deconnexion.php">Déconnexion</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+		</header>
+		
+		<section class="row">
+			<div class="col-md-12">
+				<h2>5 dernière MaJ</h2>
+				<br class="primary">
+				<div class="row">
+					<div class="col-md-10 col-lg-offset-1">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nom projet</th>
+									<th>Nom refexperience</th>
+									<th>Nom fichier</th>
+									<th>Utilisateur</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<?php
+								foreach(DonneeDao::cinqDerniereMAJ() as $row){
+							?>
+							<tbody>
+								<tr>
+									<td><?php echo $row['libelle_projet'];?></td>
+									<td><?php echo $row['libelle_refexperience'];?></td>
+									<td><?php echo $row['nomfichier_donnee'];?></td>
+									<td><?php echo $row['prenom_utilisateur'].' '.$row['nom_utilisateur'];?></td>
+									<td><?php echo $row['datecreation_donnee'];?></td>
+								</tr>
+							</tbody>
+							<?php
+								}
+							?>
+						</table>
 					</div>
 				</div>
-			</nav>
-		</header>
-
-		<section class="row">
-
-			<div class="col-md-4">
-
 			</div>
-			<div class="col-md-8">
-
-			</div>
-
 		</section>
 
 		<footer class="row">

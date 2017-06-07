@@ -35,4 +35,24 @@ class DonneeDao
 		Database::disconnect();
 		return self::$data;
 	}
+	
+	public static function cinqDerniereMAJ()
+	{
+		$pdo = Database::connect();
+		$sql = 'SELECT projet.libelle_projet, refexperience.libelle_refexperience, donnee.nomfichier_donnee,utilisateur.prenom_utilisateur, utilisateur.nom_utilisateur, donnee.datecreation_donnee FROM donnee left JOIN refexperience on donnee.id_refexperience = refexperience.id_refexperience left JOIN utilisateur on donnee.id_utilisateur = utilisateur.id_utilisateur LEFT JOIN projet2refexperience on refexperience.id_refexperience = projet2refexperience.id_refexperience LEFT JOIN projet on projet2refexperience.id_projet = projet.id_projet order by datecreation_donnee LIMIT 5';
+		self::$data = $pdo->query($sql);
+		Database::disconnect();
+		return self::$data;
+	}
+	
+	public static function cinqDerniereMAJByIdUtilisateur($IdUtilisateur)
+	{
+		$pdo = Database::connect();
+		$sql = 'SELECT projet.libelle_projet, refexperience.libelle_refexperience, donnee.nomfichier_donnee,utilisateur.prenom_utilisateur, utilisateur.nom_utilisateur, donnee.datecreation_donnee FROM donnee left JOIN refexperience on donnee.id_refexperience = refexperience.id_refexperience left JOIN utilisateur on donnee.id_utilisateur = utilisateur.id_utilisateur LEFT JOIN projet2refexperience on refexperience.id_refexperience = projet2refexperience.id_refexperience LEFT JOIN projet on projet2refexperience.id_projet = projet.id_projet where donnee.id_utilisateur = 2 order by datecreation_donnee LIMIT 5';
+		$sth = $pdo->prepare($sql);
+        $sth->execute(array($IdUtilisateur));
+        self::$data = $sth->fetchAll();
+        Database::disconnect();
+        return self::$data;	
+	}
 }

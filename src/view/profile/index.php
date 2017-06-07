@@ -5,10 +5,7 @@
 			session_start();
 			if(!isset($_SESSION['id_utilisateur'])){
 				header('Location: ' . '../view/connection');
-			}
-			
-			
-			
+			}	
 		?>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +25,11 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		
+		<?php include_once (__DIR__.'/../../dao/donnee_dao.php'); ?>
+		
+		<!-- Modal -->
+		<?php include './modal/edit-pdw-user.html';?>
 			
     </head>
     <body class="container">
@@ -53,38 +55,47 @@
 			</div>		
 		</section>
 		
+		<section class="row">
+			<div class="col-md-12">
+				<h2>5 dernière MaJ</h2>
+				<br class="primary">
+				<div class="row">
+					<div class="col-md-10 col-lg-offset-1">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nom projet</th>
+									<th>Nom refexperience</th>
+									<th>Nom fichier</th>
+									<th>Utilisateur</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<?php
+								foreach(DonneeDao::cinqDerniereMAJByIdUtilisateur($_SESSION['id_utilisateur']) as $row){
+							?>
+							<tbody>
+								<tr>
+									<td><?php echo $row['libelle_projet'];?></td>
+									<td><?php echo $row['libelle_refexperience'];?></td>
+									<td><?php echo $row['nomfichier_donnee'];?></td>
+									<td><?php echo $row['prenom_utilisateur'].' '.$row['nom_utilisateur'];?></td>
+									<td><?php echo $row['datecreation_donnee'];?></td>
+								</tr>
+							</tbody>
+							<?php
+								}
+							?>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		
 		<!-- jQuery -->
 		<script src="../../../js/jquery-3.1.1.min.js"></script>
 		<!-- bootstrap js -->
 		<script src="../../../js/bootstrap.min.js"></script>
-	
-		<!-- Modal -->
-		<div class="modal fade" id="edit-pwd-user" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<form class="form" id="formPwdUser" method="post" action="../../service/profile.php">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Changer le mot de passe</h4>
-						</div>
-						<div class="modal-body">
-							<div class="row">
-								<div class="col-xs-8 col-xs-offset-2">
-									<br>
-									<p class="text-muted">Nouveau mot de passe:</p>
-									<input type="hidden" class="form-control" name="idUser" value = "<?php echo $_SESSION['id_utilisateur']; ?>"/>
-									<input type="password" class="form-control" name="pwdUser"/>
-									<br>
-								</div>
-							</div>		
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-							<button type="submit" class="btn btn-success">Mise a jour</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-    </body>
+		
+    </body>	
 </html>
