@@ -10,7 +10,6 @@
 		include_once (__DIR__.'/../../dao/utilisateur_dao.php');
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
-		include_once (__DIR__.'/../../dao/refpath_dao.php');
     ?>
   <title>Page Admin Utilisateur</title>
   <meta charset="utf-8">

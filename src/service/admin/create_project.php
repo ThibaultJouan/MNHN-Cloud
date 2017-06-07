@@ -1,6 +1,5 @@
 <?php
 include_once (__DIR__.'/../../dao/projet_dao.php');
-include_once (__DIR__.'/../../dao/refpath_dao.php');
 include_once (__DIR__.'/../fileTools.php');
 include_once (__DIR__.'/../configPath.php');
 if($_POST['libelleProject']) {
