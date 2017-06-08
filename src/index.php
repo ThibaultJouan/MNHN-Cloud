@@ -52,7 +52,7 @@
 
 		<section class="row">
 			<div class="col-md-12">
-				<h2>5 dernière MaJ</h2>
+				<h2>5 dernières Mises a Jour</h2>
 				<br class="primary">
 				<div class="row">
 					<div class="col-md-10 col-lg-offset-1">
