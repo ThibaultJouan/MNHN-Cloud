@@ -84,6 +84,19 @@
       <tbody>
 
 		<?php
+		if(RefExperience2UtilisateurDao::contains($id_user, $id_exp)
+			|| $_SESSION['admin'] == 1
+			|| Projet2UtilisateurDao::isChefProjet($id_projet, $id_user) == 1){
+			echo '<h3>Ajouter un fichier</h3>';
+			echo '<form method="post" action="../../service/downloadManager.php" enctype="multipart/form-data">';
+			echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
+			echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
+			echo '<input type="hidden" name="section" value="'.$section.'">';
+			echo 'Commentaire : <input type="text" name="commentaire" >';
+			echo '<input type="file" name="nom_du_fichier">';
+			echo '<input type="submit" value="Envoyer">';
+			echo '</form>';
+		}
 		$indexCount	= count($dirArray);
 		// loop through the array of files and print them all
 		for($index=0; $index < $indexCount; $index++) {
@@ -101,24 +114,15 @@
 		}
 		print("</TABLE>\n");
 
-		if(RefExperience2UtilisateurDao::contains($id_user, $id_exp)
-			|| $_SESSION['admin'] == 1
-			|| Projet2UtilisateurDao::isChefProjet($id_projet, $id_user) == 1){
-			echo '<h3>Ajouter un fichier</h3>';
-			echo '<form method="post" action="../../service/downloadManager.php" enctype="multipart/form-data">';
-			echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
-			echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
-			echo '<input type="hidden" name="section" value="'.$section.'">';
-			echo 'Commentaire : <input type="text" name="commentaire" >';
-			echo '<input type="file" name="nom_du_fichier">';
-			echo '<input type="submit" value="Envoyer">';
-			echo '</form>';
-		}
 
 		?>
       </tbody>
     </table>
     <!--Fin Module ref experience -->
 
+		<!-- jQuery -->
+		<script src="../../../js/jquery-3.1.1.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="../../../js/bootstrap.min.js"></script>
 	</body>
 </html>

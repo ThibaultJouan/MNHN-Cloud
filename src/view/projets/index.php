@@ -67,6 +67,18 @@
 			</thead>
 			<tbody>
 				<?php
+
+						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
+							|| $_SESSION['admin'] == 1){
+							echo "<tr>";
+							echo '<form method="post" action="../../service/cdpAjoutExperience.php">';
+							echo '<input type="hidden" name="idProject" value="'.$id_project.'"/>';
+							echo '<td><input type="text" name="libelleExp" /></td>';
+							echo '<td><input type="text" name="commentaireExp" /></td>';
+							echo '<td></td><td></td>';
+							echo '<td><button type="submit" class="btn btn-success btn-sm" >Créer experience</button></td>';
+							echo '</form></tr>';
+						}
 				$row = ProjetDao::getLibelleById($id_project);
 					//if($row['id_projet'] == $id_project) {
 						echo '<h1>'. $row['libelle_projet'] .'</h1>';
@@ -95,18 +107,9 @@
 			</tbody>
 		</table>
 
-<?php
-						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
-							|| $_SESSION['admin'] == 1){
-							echo "<h3>ajouter une experience</h3>";
-							echo '<form method="post" action="../../service/cdpAjoutExperience.php">';
-							echo '<input type="hidden" name="idProject" value="'.$id_project.'"/>';
-							echo '<input type="text" name="libelleExp" />';
-							echo '<input type="text" name="commentaireExp" />';
-							echo '<button type="submit" class="btn btn-success btn-sm" >Créer experience</button>';
-							echo '</form>';
-						}
-?>
+
+
+
     <!--Fin Module ref experience -->
 
 		<!-- jQuery -->

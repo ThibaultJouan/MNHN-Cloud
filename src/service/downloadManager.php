@@ -9,18 +9,19 @@ $log = Log::getLog();
 
 session_start();
 
+$pathSave = PATH_WEB."src/view/projets/index.php?id=";
 $idUser = $_SESSION['id_utilisateur'];
 $idProjet = $_POST['id_projet'];
 $idExp = $_POST['id_exp'];
 $section = $_POST['section'];
 $commentaire = $_POST['commentaire'];
-
 $path = PATH_PROJET;
 $row = ProjetDao::getLibelleById($idProjet);
 $pathProjet = $path.$row['libelle_projet'];
 $row = RefExperienceDao::getLibelleActifById($idExp);
 $pathExperience = $pathProjet.'/'.$row['libelle_refexperience'];
 $directory = $pathExperience.'/'.$section.'/';
+$pathSave .= $idProjet;
 
 if ($_FILES['nom_du_fichier']['error']) {
           switch ($_FILES['nom_du_fichier']['error']){
@@ -53,5 +54,6 @@ else {
 		move_uploaded_file($_FILES['nom_du_fichier']['tmp_name'], $directory.$_FILES['nom_du_fichier']['name']);
 		$log->info("le fichier ".$_FILES['nom_du_fichier']['name']." a ete upload sur le serveur");
 	}
+	header('Location: ' . $pathSave);
 }
 ?>
