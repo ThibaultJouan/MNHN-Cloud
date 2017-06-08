@@ -17,14 +17,15 @@
 		$id_project = $_GET["id"];
 		$id_utilisateur = $_SESSION['id_utilisateur'];
 
-		if(Projet2UtilisateurDao::contains($id_project, $id_utilisateur)  !=1 && $_SESSION['admin'] != 1){
+		if(Projet2UtilisateurDao::contains($id_project, $id_utilisateur) !=1 && $_SESSION['admin'] != 1){
 			header('Location: ' . '../../index.php');
 		}
 		?>
 
-			<title><?php $row = ProjetDao::getLibelleById($id_project);
-			echo $row['libelle_projet'];
-			?></title>
+		<title>
+			<?php $row = ProjetDao::getLibelleById($id_project);
+			echo $row['libelle_projet'];?>
+		</title>
 
 		<link rel="icon" type="image/png" href="../../../img/logo/logo_MNHN.png" />
 
@@ -52,20 +53,19 @@
 					<hr class="primary">
 				</div>
 			</div>
-
-		<?php include (__DIR__.'/../../navbar.html')?>
+			<?php include (__DIR__.'/../../navbar.html')?>
 		</header>
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Libellé</th>
-          <th>Commentaire</th>
-          <th>Actif</th>
-          <th>Date creation</th>
-          <th>Acces aux donnees</th>
-        </tr>
-      </thead>
-      <tbody>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Libellé</th>
+					<th>Commentaire</th>
+					<th>Actif</th>
+					<th>Date creation</th>
+					<th>Acces aux donnees</th>
+				</tr>
+			</thead>
+			<tbody>
 				<?php
 				$row = ProjetDao::getLibelleById($id_project);
 					//if($row['id_projet'] == $id_project) {
@@ -92,8 +92,8 @@
 					//}
 
 				?>
-      </tbody>
-    </table>
+			</tbody>
+		</table>
 
 <?php
 						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
@@ -109,5 +109,9 @@
 ?>
     <!--Fin Module ref experience -->
 
+		<!-- jQuery -->
+		<script src="../../../js/jquery-3.1.1.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="../../../js/bootstrap.min.js"></script>
 	</body>
 </html>
