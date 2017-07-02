@@ -36,7 +36,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Prenom</th>
+                        <th>Prénom</th>
                         <th>Nom</th>
                         <th>Mail</th>
                     </tr>
@@ -64,7 +64,7 @@
             <div class="row">
                 <div class = 'col-md-2'>
                     <button type="submit" form="formProject2Utilisateur" class="btn btn-success"
-			            href="../../../service/admin/edit_project2user_bdd.php">Mise a jour</button>
+			            href="../../../service/admin/edit_project2user_bdd.php">Mise à jour</button>
                 </div>
                 <div class = 'col-md-2'>
                     <p>

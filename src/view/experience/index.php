@@ -60,7 +60,7 @@
 		<header class="row">
 			<div class="col-xs-12">
 				<center>
-					<h1>Experiences</h1>
+					<h1>Expériences</h1>
 				</center>
 			</div>
 			<div class="row">
@@ -92,9 +92,9 @@
 			echo '<input type="hidden" name="id_projet" value="'.$id_projet.'">';
 			echo '<input type="hidden" name="id_exp" value="'.$id_exp.'">';
 			echo '<input type="hidden" name="section" value="'.$section.'">';
-			echo 'Commentaire : <input type="text" name="commentaire" >';
-			echo '<input type="file" name="nom_du_fichier">';
-			echo '<input type="submit" value="Envoyer">';
+			echo '<td>Commentaire : <input type="text" name="commentaire" ></td>';
+			echo '<td><input type="file" name="nom_du_fichier"></td>';
+			echo '<td><input type="submit" value="Envoyer"></td>';
 			echo '</form>';
 		}
 		$indexCount	= count($dirArray);

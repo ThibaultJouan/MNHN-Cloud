@@ -66,7 +66,7 @@
                 </div>
                 <div class = 'col-md-2'>
                     <p>
-                        <a href="../index.php" class="btn btn-warning">Annule</a>
+                        <a href="../index.php" class="btn btn-warning">Annuler</a>
                     </p>
                 </div>
             </div>

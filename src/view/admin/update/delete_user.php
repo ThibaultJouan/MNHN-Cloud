@@ -52,10 +52,10 @@ include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
                 echo '<a href="index.php" class="btn btn-success" id="active-usr" data-id="'.$id.'">';
 
                     if($row['actif_utilisateur'] == 1){
-                        echo "Désactive ";
+                        echo "Désactiver ";
                     }
                     else{
-                        echo "Active ";
+                        echo "Activer ";
                     }
                     ?>
                 </a>
@@ -63,7 +63,7 @@ include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
         </div>
         <div class = 'col-md-3'>
             <p>
-                <a href="index.php" class="btn btn-warning">Annule</a>
+                <a href="index.php" class="btn btn-warning">Annuler</a>
             </p>
         </div>
      </div>

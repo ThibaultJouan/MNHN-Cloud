@@ -11,7 +11,7 @@
 		include_once (__DIR__.'/../../dao/projet_dao.php');
 		include_once (__DIR__.'/../../dao/refexperience_dao.php');
     ?>
-  <title>Page Admin Experience</title>
+  <title>Page Admin Expérience</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -75,16 +75,16 @@
     <!-- Fin active/desactive experience -->
 
     <!-- Module ref experience -->
-    <h2>Experiences</h2>
+    <h2>Expériences</h2>
 		<div>
 			<a class="btn btn-primary btn-sm" href="./">Utilisateur</a>
 			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
-			<a class="btn btn-primary btn-sm" disabled="disabled" href="./experience.php">Experiences</a>
+			<a class="btn btn-primary btn-sm" disabled="disabled" href="./experience.php">Expériences</a>
 		</div>
     </br>
     </br>
     <p>
-      <a href="./create/create_experience.html" class="btn btn-success">Créer une experience</a>
+      <a href="./create/create_experience.html" class="btn btn-success">Créer une expérience</a>
     </p>
     <table class="table table-striped table-bordered">
       <thead>
@@ -92,7 +92,7 @@
           <th>Libellé</th>
           <th>Commentaire</th>
           <th>Actif</th>
-          <th>Date creation</th>
+          <th>Date création</th>
         </tr>
       </thead>
       <tbody>
@@ -104,7 +104,7 @@
           echo '<td>'. $row['actif_refexperience'] . '</td>';
           echo '<td>'. $row['datecreation_refexperience'] . '</td>';
           echo '<td>';
-          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Activer/Desactiver experience</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-experience" data-id="'.$row['id_refexperience'].'">Activer/Désactiver expérience</a>';
           echo '</td>';
           echo '</tr>';
         }

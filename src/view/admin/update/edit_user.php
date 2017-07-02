@@ -54,9 +54,9 @@
 		<br/>
 		<div class="row">
 			<div class = 'col-md-12'>
-				<button type="submit" form="formUser" class="btn btn-success" href="../../service/admin/edit_user_bdd.php">Mise a jour</button>
+				<button type="submit" form="formUser" class="btn btn-success" href="../../service/admin/edit_user_bdd.php">Mise à jour</button>
 				<button type="submit" form="formUser2Projets" class="btn btn-success" href="./update/edit_user2projets.php">Affecter projets</button>
-				<a href="index.php" class="btn btn-warning">Annule</a>
+				<a href="index.php" class="btn btn-warning">Annuler</a>
 			</div>
 		</div>
     </div>

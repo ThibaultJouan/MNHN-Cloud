@@ -42,7 +42,7 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Nom de l'experience</th>
+                        <th>Nom de l'expérience</th>
                         <th>Droits pour déposer des fichiers</th>
                     </tr>
                 </thead>
@@ -70,7 +70,7 @@
                 </div>
                 <div class = 'col-md-2'>
                     <p>
-                        <a href="../index.php" class="btn btn-warning">Annule</a>
+                        <a href="../index.php" class="btn btn-warning">Annuler</a>
                     </p>
                 </div>
             </div>

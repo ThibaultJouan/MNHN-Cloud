@@ -40,8 +40,8 @@
 		<br/>
 		<div class="row">
 			<div class = 'col-md-12'>
-				<button type="submit" form="formPwdUser" class="btn btn-success" href="../../service/admin/edit_pwd_user_bdd.php">Mise a jour</button>
-				<a href="index.php" class="btn btn-warning">Annule</a>
+				<button type="submit" form="formPwdUser" class="btn btn-success" href="../../service/admin/edit_pwd_user_bdd.php">Mise à jour</button>
+				<a href="index.php" class="btn btn-warning">Annuler</a>
 			</div>
 		</div>
     </div>

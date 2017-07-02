@@ -53,10 +53,10 @@ if($_POST['rowid']) {
                 echo '<a href="experience.php" class="btn btn-success" id="active-exp" data-id="'.$id.'">';
 
                     if($row['actif_refexperience'] == 1){
-                        echo "Désactive ";
+                        echo "Désactiver ";
                     }
                     else{
-                        echo "Active ";
+                        echo "Activer ";
                     }
                     ?>
                 </a>
@@ -64,7 +64,7 @@ if($_POST['rowid']) {
         </div>
         <div class = 'col-md-3'>
             <p>
-                <a href="experience.php" class="btn btn-warning">Annule</a>
+                <a href="experience.php" class="btn btn-warning">Annuler</a>
             </p>
         </div>
      </div>

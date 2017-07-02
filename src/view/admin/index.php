@@ -134,7 +134,7 @@
 		<div>
 			<a class="btn btn-primary btn-sm" disabled="disabled"  href="./">Utilisateur</a>
 			<a class="btn btn-primary btn-sm" href="./projet.php">Projets</a>
-			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
+			<a class="btn btn-primary btn-sm" href="./experience.php">Expériences</a>
 		</div>
     </br>
     </br>
@@ -149,7 +149,7 @@
           <th>Addresse email</th>
           <th>Admin</th>
           <th>Actif</th>
-          <th>Date creation</th>
+          <th>Date création</th>
         </tr>
       </thead>
       <tbody>
@@ -163,7 +163,7 @@
           echo '<td>'. $row['actif_utilisateur'] . '</td>';
           echo '<td>'. $row['datecreation_utilisateur'] . '</td>';
           echo '<td>';
-          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Aviter/Desactiver utilisateur</a>';
+          echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#desactive-user" data-id="'.$row['id_utilisateur'].'">Activer/Désactiver utilisateur</a>';
 					echo '</td><td>';
           echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-pwd-user" data-id="'.$row['id_utilisateur'].'">Editer utilisateur</a>';
 					echo '</td><td>';

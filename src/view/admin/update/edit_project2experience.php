@@ -38,7 +38,7 @@
                     <tr>
                         <th>Nom</th>
                         <th>Commentaire</th>
-                        <th>Date creation</th>
+                        <th>Date création</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,11 +64,11 @@
             <div class="row">
                 <div class = 'col-md-2'>
                     <button type="submit" form="formProject2Experience" class="btn btn-success"
-			            href="../../../service/admin/edit_project2experience_bdd.php">Mise a jour</button>
+			            href="../../../service/admin/edit_project2experience_bdd.php">Mise à jour</button>
                 </div>
                 <div class = 'col-md-2'>
                     <p>
-                        <a href="../index.php" class="btn btn-warning">Annule</a>
+                        <a href="../index.php" class="btn btn-warning">Annuler</a>
                     </p>
                 </div>
             </div>

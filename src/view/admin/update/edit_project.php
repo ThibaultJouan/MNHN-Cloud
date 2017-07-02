@@ -65,9 +65,9 @@
 		<br/>
 		<div class="row">
 			<div class = 'col-md-12'>
-				<button type="submit" form="formProject" class="btn btn-success" href="../../service/admin/edit_project_bdd.php">Mise a jour</button>
+				<button type="submit" form="formProject" class="btn btn-success" href="../../service/admin/edit_project_bdd.php">Mise à jour</button>
 				<button type="submit" form="formProject2User" class="btn btn-success" href="./update/edit_project2user.php">Lier utilisateurs</button>
-				<button type="submit" form="formProject2Experience" class="btn btn-success" href="./update/edit_project2experience.php">Lier experiences</button>
+				<button type="submit" form="formProject2Experience" class="btn btn-success" href="./update/edit_project2experience.php">Lier expériences</button>
 				<a href="projet.php" class="btn btn-warning">Annuler</a>
 			</div>
 		</div>

@@ -80,7 +80,7 @@
 		<div>
 			<a class="btn btn-primary btn-sm" href="./">Utilisateur</a>
 			<a class="btn btn-primary btn-sm" disabled="disabled" href="./projet.php">Projets</a>
-			<a class="btn btn-primary btn-sm" href="./experience.php">Experiences</a>
+			<a class="btn btn-primary btn-sm" href="./experience.php">Expériences</a>
 		</div>
     </br>
     </br>
@@ -93,7 +93,7 @@
           <th>Nom</th>
           <th>Commentaire</th>
           <th>Actif</th>
-          <th>Date creation</th>
+          <th>Date création</th>
         </tr>
       </thead>
       <tbody>
@@ -110,7 +110,7 @@
           echo '<td>';
           echo '<a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit-project" data-id="'.$row['id_projet'].'">Editer projet</a>';
 					echo '</td><td>';
-					echo '<button type="submit" form="formProject2Experience'.$row['id_projet'].'"" class="btn btn-info btn-sm" href="./update/edit_project2experience.php">Lier experiences</button>';
+					echo '<button type="submit" form="formProject2Experience'.$row['id_projet'].'"" class="btn btn-info btn-sm" href="./update/edit_project2experience.php">Lier expériences</button>';
 		      echo '</td>';
           echo '<tr>';
         }
