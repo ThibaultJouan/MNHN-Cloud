@@ -63,6 +63,12 @@
 					<th>Actif</th>
 					<th>Date creation</th>
 					<th>Acces aux donnees</th>
+					<?php
+						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
+							|| $_SESSION['admin'] == 1){
+							echo "<th>Lier utilisateur</th>";
+						}
+					?>
 				</tr>
 			</thead>
 			<tbody>
@@ -95,6 +101,18 @@
 								echo '<a class="btn btn-success btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Pression">Pression</a>';
 								echo '<a class="btn btn-success btn-sm" href="../experience/index.php?projet='.$id_project.'&exp='.$exp['id_refexperience'].'&section=Video">Video</a>';
 								echo '</td>';
+						if(Projet2UtilisateurDao::isChefProjet($id_project, $id_utilisateur) == 1
+							|| $_SESSION['admin'] == 1){/*
+								echo '<input type="hidden" name="id_project" value='.$id_project.'>';
+								echo '<td><a class="btn btn-success btn-sm" href="../admin/update/edit_project2user.php">Lier</a></td>';
+							 */
+							echo '<td>';
+							echo '<form action="../admin/update/edit_project2user.php" method="post">';
+							echo '<input type="hidden" name="idProject" value='.$id_project.'>';
+							echo '<input class="btn btn-success btn-sm" type="submit" value="Lier">';
+							echo ' </form>';
+							echo '</td>';
+						}
 								echo '</tr>';
 							}
 						}

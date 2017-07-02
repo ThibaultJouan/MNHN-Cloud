@@ -11,10 +11,10 @@
     <body>
 		<?php
 	 		session_start();
-			if($_SESSION ['admin'] != 1){
+			/*if($_SESSION ['admin'] != 1){
 				header('Location: ' . '../../../index.php');
 				exit();
-			}
+			}*/
 			include_once (__DIR__.'/../../../dao/projet_dao.php');
       include_once (__DIR__.'/../../../dao/utilisateur_dao.php');
       include_once (__DIR__.'/../../../dao/projet_utilisateur_dao.php');
@@ -68,7 +68,7 @@
                 </div>
                 <div class = 'col-md-2'>
                     <p>
-                        <a href="../index.php" class="btn btn-warning">Annule</a>
+                        <a href="../index.php" class="btn btn-warning">Annuler</a>
                     </p>
                 </div>
             </div>
